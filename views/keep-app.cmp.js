@@ -5,9 +5,13 @@ import noteList from '../apps/keep/cmps/note-list.cmp.js'
 
 export default {
     template:/*html*/`
-    <h1>keep app</h1>
-    <note-add />
-    <note-list :notes="notes" />
+    <div class="keep-app flex column align-center">
+        <section class="keep-header full flex justify-between">
+            <h1>keep app</h1>
+            <note-add />
+        </section>
+        <note-list :notes="notes" />
+    </div>
     
     `,
     data() {

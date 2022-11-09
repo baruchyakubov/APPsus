@@ -1,5 +1,7 @@
 export default {
     template: /*html*/`
-    <input type="text" />
+    <div class="note-add">
+        <input type="text" />
+    </div>
     `
 }
