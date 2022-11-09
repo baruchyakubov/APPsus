@@ -1,0 +1,8 @@
+.note-list-container{
+    background-color: var(--clr1);
+}
+
+.note-list{
+    max-width: 1340px;
+    background-color: var(--clr2);
+}
