@@ -55,6 +55,7 @@
 
 .modal{
     background-color: #e0ebeb;
+    font-size: 1.5em;
     z-index: 2;
     color: #24527a;
     border-radius: 1em;

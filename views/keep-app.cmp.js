@@ -42,7 +42,6 @@ export default {
             this.saveNote(note)
         },
         editNote(note) {
-            console.log('editing', note)
             this.selectedNote = note
             eventBus.emit('toggleScreen')
         },
@@ -54,7 +53,7 @@ export default {
         },
         removeNote(note) {
             console.log('removing', note)
-            noteService.remove(note)
+            noteService.remove(note.id)
                 .then(res => this.getNotes())
         },
         getNotes() {

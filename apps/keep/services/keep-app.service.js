@@ -8,6 +8,7 @@ export const noteService = {
     get,
     remove,
     save,
+    createNewNote,
 }
 
 function query() {
@@ -28,6 +29,14 @@ function save(note) {
         return storageService.put(NOTES_KEY, note)
     } else {
         return storageService.post(NOTES_KEY, note)
+    }
+}
+
+function createNewNote() {
+    return {
+        type: 'note-txt',
+        isPinned: false,
+        style: '#5dacbd',
     }
 }
 

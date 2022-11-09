@@ -11,7 +11,10 @@ export default {
         <img src="../../../assets/images/delete.png" @click="remove" alt="" />
     </div>
         `,
-    created() {
+    data() {
+        return {
+            action: null,
+        }
     },
     methods: {
         pin() {
