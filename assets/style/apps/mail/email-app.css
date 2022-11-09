@@ -1,6 +1,13 @@
 .email-preview{
-    background-color: var(--clr1);
    margin-bottom: 20px;
   cursor: pointer;
-   
+}
+
+.white{
+  background-color: beige;
+  font-weight: bold;
+}
+
+.grey{
+  background-color: var(--clr1);
 }
