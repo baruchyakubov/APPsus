@@ -23,23 +23,46 @@ function remove(noteId) {
     return storageService.remove(NOTES_KEY)
 }
 
-function save(book) {
-    if (book.id) {
-        return storageService.put(NOTES_KEY, book)
+function save(note) {
+    if (note.id) {
+        return storageService.put(NOTES_KEY, note)
     } else {
-        return storageService.post(NOTES_KEY, book)
+        return storageService.post(NOTES_KEY, note)
     }
 }
 
 
 function _createNotes() {
     let notes
-    debugger
     storageService.query(NOTES_KEY)
         .then(res => {
             notes = res
             if (!notes || !notes.length) {
                 notes = [
+                    {
+                        id: utilService.makeId(),
+                        type: "note-txt",
+                        isPinned: true,
+                        info: {
+                            txt: "Fullstack Me Baby!"
+                        }
+                    },
+                    {
+                        id: utilService.makeId(),
+                        type: "note-txt",
+                        isPinned: true,
+                        info: {
+                            txt: "Fullstack Me Baby!"
+                        }
+                    },
+                    {
+                        id: utilService.makeId(),
+                        type: "note-txt",
+                        isPinned: true,
+                        info: {
+                            txt: "Fullstack Me Baby!"
+                        }
+                    },
                     {
                         id: utilService.makeId(),
                         type: "note-txt",
