@@ -1,6 +1,6 @@
 .email-preview{
-   margin-bottom: 20px;
   cursor: pointer;
+  border: 1px black solid;
 }
 
 .white{
@@ -10,4 +10,8 @@
 
 .grey{
   background-color: var(--clr1);
+}
+
+.email-list{
+  margin-top: 20px;
 }

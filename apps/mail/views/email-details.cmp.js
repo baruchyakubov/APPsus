@@ -4,9 +4,8 @@ export default{
     template:`
     <section v-if="email" class="email-details">
     <h1>{{ email.subject }}</h1>
-    <h3>{{ email.sentAt }}</h3>
+    <h3>{{ setDate }}</h3>
     <h3>[{{ email.fullname }}] <span><{{ email.from }}></span> </h3>
-    <p>{{ setDate }}</p>
     <p>{{ email.body }}</p>
     <pre>
 Thankes,
@@ -28,7 +27,7 @@ Thankes,
     },
     computed:{
         setDate(){
-            return new Date(this.email.sentAt).toLocaleDateString()
-          }
+          return new Date(this.email.sentAt).toLocaleDateString()
+        }
     }
 }
