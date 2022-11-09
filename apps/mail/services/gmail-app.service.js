@@ -42,10 +42,8 @@ function save(email) {
 
 
 function _createEmails() {
-    let emails
-    storageService.query(EMAILS_KEY)
-        .then(res => {
-            emails = res
+    let emails =  JSON.parse(localStorage.getItem(EMAILS_KEY)) 
+   
             if (!emails || !emails.length) {
                 emails = [
                     {
@@ -55,7 +53,8 @@ function _createEmails() {
                         isRead: false,
                         sentAt: 1551133930594,
                         from: 'momo@momo.com',
-                        to: 'user@appsus.com'
+                        to: 'user@appsus.com',
+                        fullname: 'puki'
                     },
 
                     {
@@ -65,7 +64,8 @@ function _createEmails() {
                         isRead: false,
                         sentAt: 1551133930594,
                         from: 'momo@momo.com',
-                        to: 'user@appsus.com'
+                        to: 'user@appsus.com',
+                        fullname: 'puki'
                     },
                     {
                         id: utilService.makeId(),
@@ -74,7 +74,8 @@ function _createEmails() {
                         isRead: false,
                         sentAt: 1551133930594,
                         from: 'momo@momo.com',
-                        to: 'user@appsus.com'
+                        to: 'user@appsus.com',
+                        fullname: 'puki'
                     },
                     {
                         id: utilService.makeId(),
@@ -83,10 +84,11 @@ function _createEmails() {
                         isRead: false,
                         sentAt: 1551133930594,
                         from: 'momo@momo.com',
-                        to: 'user@appsus.com'
+                        to: 'user@appsus.com',
+                        fullname: 'puki'
                     }
                 ]
                 localStorage.setItem(EMAILS_KEY, JSON.stringify(emails) || null)
             }
-        })
-}
+        }
+
