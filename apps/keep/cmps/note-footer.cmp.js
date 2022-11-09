@@ -17,16 +17,16 @@ export default {
         pin() {
             eventBus.emit('pinNote', this.note)
         },
-        edit(note) {
+        edit() {
             eventBus.emit('editNote', this.note)
         },
-        send(note) {
+        send() {
             eventBus.emit('sendNote', this.note)
         },
-        paint(note) {
+        paint() {
             eventBus.emit('paintNote', this.note)
         },
-        remove(note) {
+        remove() {
             eventBus.emit('removeNote', this.note)
         },
     }
