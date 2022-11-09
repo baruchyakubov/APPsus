@@ -1,6 +1,6 @@
-import { gmailService } from '../services/gmail-app.service.js'
+import { gmailService } from '../apps/mail/services/gmail-app.service.js'
 
-import  emailList  from '../cmps/email-list.cmp.js'
+import  emailList  from '../apps/mail/cmps/inbox-list.cmp.js'
 
 export default{
     template:`
@@ -16,6 +16,7 @@ export default{
     created() {
         gmailService.query()
             .then(list => {
+                console.log(list);
                 this.emails = list
             })
     },
