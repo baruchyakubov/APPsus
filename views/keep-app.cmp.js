@@ -1,12 +1,14 @@
 import { noteService } from '../services/keep-app.service.js'
 
+import noteAdd from '../apps/keep/cmps/note-add.cmp.js'
+import noteList from '../apps/keep/cmps/note-list.cmp.js'
 
-{/* <note-add />
-<note-list /> */}
 export default {
     template:/*html*/`
     <h1>keep app</h1>
-
+    <note-add />
+    <note-list :notes="notes" />
+    
     `,
     data() {
         return {
@@ -14,6 +16,11 @@ export default {
         }
     },
     created() {
-        this.notes = noteService.query()
+        noteService.query()
+            .then(notes => this.notes = notes)
     },
+    components: {
+        noteAdd,
+        noteList
+    }
 }

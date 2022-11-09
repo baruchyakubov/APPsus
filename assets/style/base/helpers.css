@@ -55,3 +55,13 @@
 .fa.fa-behance::before {
     content: "\f1b4";
 }
+
+/* grid helpers */
+
+.grid {
+    display: grid;
+}
+
+.full{
+    width: 100%;
+}
