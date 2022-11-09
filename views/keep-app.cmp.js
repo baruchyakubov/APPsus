@@ -1,4 +1,5 @@
 import { noteService } from '../apps/keep/services/keep-app.service.js'
+import { eventBus } from "../../../services/event-bus.service.js"
 
 import noteAdd from '../apps/keep/cmps/note-add.cmp.js'
 import noteList from '../apps/keep/cmps/note-list.cmp.js'
@@ -21,7 +22,32 @@ export default {
     },
     created() {
         noteService.query()
-            .then(notes => this.notes = notes)
+            .then(notes => {
+                this.notes = notes
+                console.log(this.notes)
+            })
+        eventBus.on('pinNote', this.pinNote)
+        eventBus.on('editNote', this.editNote)
+        eventBus.on('sendNote', this.sendNote)
+        eventBus.on('paintNote', this.paintNote)
+        eventBus.on('removeNote', this.removeNote)
+    },
+    methods: {
+        pinNote(note) {
+            console.log('pinning', note)
+        },
+        editNote(note) {
+            console.log('editing', note)
+        },
+        sendNote(note) {
+            console.log('sending', note)
+        },
+        paintNote(note) {
+            console.log('painting', note)
+        },
+        removeNote(note) {
+            console.log('removing', note)
+        },
     },
     components: {
         noteAdd,
