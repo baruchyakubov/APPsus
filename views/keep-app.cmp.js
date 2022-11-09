@@ -3,7 +3,6 @@ import { eventBus } from "../../../services/event-bus.service.js"
 
 import noteAdd from '../apps/keep/cmps/note-add.cmp.js'
 import noteList from '../apps/keep/cmps/note-list.cmp.js'
-import noteEdit from '../apps/keep/pages/edit.js'
 
 export default {
     template:/*html*/`
@@ -63,6 +62,5 @@ export default {
     components: {
         noteAdd,
         noteList,
-        noteEdit
     }
 }
