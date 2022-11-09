@@ -7,6 +7,9 @@ import gmailApp from './views/gmail-app.cmp.js'
 import inboxList from '../apps/mail/views/inbox-list.cmp.js'
 import emailDeatails from '../apps/mail/views/email-details.cmp.js'
 
+import noteEdit from './apps/keep/pages/note-edit.cmp.js'
+
+
 const { createRouter, createWebHashHistory } = VueRouter
 
 const routerOptions = {
@@ -21,22 +24,26 @@ const routerOptions = {
 			component: aboutPage,
 		},
 		{
-			path:'/gmail-app',
+			path: '/gmail-app',
 			component: gmailApp,
 			children: [
-                { 
-				 path: 'inbox',
-				 component: inboxList,
-				}	
-              ]
+				{
+					path: 'inbox',
+					component: inboxList,
+				}
+			]
 		},
 		{
 			path: '/gmail-app/inbox/:id',
 			component: emailDeatails
 		},
 		{
-			path:'/keep-app',
+			path: '/keep-app',
 			component: keepApp
+		},
+		{
+			path: '/keep-app/:id',
+			component: noteEdit
 		},
 	],
 }

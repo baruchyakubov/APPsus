@@ -12,7 +12,6 @@ export const noteService = {
 
 function query() {
     return storageService.query(NOTES_KEY)
-        .then(notes => notes.sort((a, b) => a.isPinned ? -1 : b.isPinned ? 1 : 0))
 }
 
 

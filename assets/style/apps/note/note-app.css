@@ -1,5 +1,6 @@
 .keep-header{
     padding: 1em;
+    gap: 1em;
 }
 
 .note-list-container{
@@ -20,6 +21,10 @@
     background-color: var(--clr3);
     font-size: 2em;
     position:relative
+}
+
+.note.pinned{
+    background-color: #ffc93c;
 }
 
 .note-options{
