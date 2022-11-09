@@ -3,6 +3,7 @@ import { eventBus } from "../../../services/event-bus.service.js"
 
 import noteAdd from '../apps/keep/cmps/note-add.cmp.js'
 import noteList from '../apps/keep/cmps/note-list.cmp.js'
+import noteEdit from '../apps/keep/cmps/note-edit.cmp.js'
 
 export default {
     template:/*html*/`
@@ -10,14 +11,17 @@ export default {
         <section class="keep-header full flex">
             <h1>keep app</h1>
             <note-add @save="saveNote"/>
+            <h1 class="add-link" @click="editNote">Add a new note....</h1>
         </section>
         <note-list :notes="notes" />
+        <note-edit :note="selectedNote" />
     </div>
     
     `,
     data() {
         return {
-            notes: null
+            notes: null,
+            selectedNote: null,
         }
     },
     created() {
@@ -39,6 +43,8 @@ export default {
         },
         editNote(note) {
             console.log('editing', note)
+            this.selectedNote = note
+            eventBus.emit('toggleScreen')
         },
         sendNote(note) {
             console.log('sending', note)
@@ -62,5 +68,6 @@ export default {
     components: {
         noteAdd,
         noteList,
+        noteEdit,
     }
 }
