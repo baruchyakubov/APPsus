@@ -1,4 +1,4 @@
-import { noteService } from '../services/keep-app.service.js'
+import { noteService } from '../apps/keep/services/keep-app.service.js'
 
 import noteAdd from '../apps/keep/cmps/note-add.cmp.js'
 import noteList from '../apps/keep/cmps/note-list.cmp.js'
