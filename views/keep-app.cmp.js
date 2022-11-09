@@ -1,4 +1,4 @@
-import { noteService } from '../apps/keep/services/note.service.js'
+import { noteService } from '../services/keep-app.service.js'
 
 export default {
     template:/*html*/`
