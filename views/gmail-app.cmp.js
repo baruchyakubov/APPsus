@@ -1,38 +1,49 @@
 import { gmailService } from '../apps/mail/services/gmail-app.service.js'
 import { eventBus } from '../services/event-bus.service.js'
 
-import  inboxList  from '../apps/mail/views/inbox-list.cmp.js'
+import emailList from '../apps/mail/views/inbox-list.cmp.js'
 
 import emailFolderList from '../apps/mail/cmps/email-folder-list.cmp.js'
 
-export default{
-    template:`
+export default {
+    template: `
     <h1>gmail app</h1>
     <email-folder-list/>
-    <router-view v-if="emails" :emails="emails" />
+    <email-list v-if="emails" :emails="emails" />
     `,
-    data(){
+    data() {
         return {
-            emails: null
+            emails: null,
+            gFilterBy: {
+                txt: '',
+                isRead: true,
+            }
         }
-       
+
     },
     created() {
         gmailService.query()
             .then(list => {
                 this.emails = list
             })
-            eventBus.on('changeReadState' , this.changeReadState)
-            
+        eventBus.on('changeReadState', this.changeReadState)
     },
-    components:{
-        inboxList,
-        emailFolderList
+    components: {
+        emailFolderList,
+        emailList,
     },
-    methods:{
-        changeReadState(book){
-            if(!book.isRead) book.isRead = !book.isRead
+    methods: {
+        changeReadState(book) {
+            if (!book.isRead) book.isRead = !book.isRead
             gmailService.save(book)
+        }
+    },
+    computed:{
+        emailsToShow(){
+            const regex = new RegExp(this.filterBy.txt, 'i')
+            var emails = this.emails.filter(email => regex.test(email.fullname))
+            emails = emails.filter(email => email.isRead > this.filterBy.isRead)
+            return emails
         } 
     }
 }

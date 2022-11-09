@@ -11,7 +11,7 @@ export default{
 Thankes,
 {{ email.fullname }}
     </pre>
-    <router-link to='/gmail-app/inbox'><button>return</button></router-link>
+    <router-link to='/gmail-app'><button>return</button></router-link>
     </section>
     
     `,

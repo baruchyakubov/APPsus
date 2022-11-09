@@ -1,10 +1,11 @@
+
 export default{
     template:`
     <section>
-    <router-link to="/gmail-app/inbox">Inbox</router-link> |
-    <router-link to="/gmail-app/inbox">Sent</router-link> |
-    <router-link to="/gmail-app/inbox">Deleted</router-link> |
-    <router-link to="/keep-app"><button>Composed</button></router-link>
+        <button>Inbox</button>
+        <button>Sent</button>
+        <button>trash</button>
+        <router-link to="/gmail-app"><button>Composed</button></router-link>
     </section>
     
     `
