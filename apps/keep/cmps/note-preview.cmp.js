@@ -18,6 +18,5 @@ export default {
         isPinned() {
             return { hidden: !this.note.isPinned }
         },
-        note
     },
 }
