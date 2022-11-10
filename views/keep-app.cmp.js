@@ -7,52 +7,66 @@ import noteEdit from '../apps/keep/cmps/note-edit.cmp.js'
 
 export default {
     template:/*html*/`
+    <div class="main-screen" @click="toggleScreen" v-bind:class="screenStyle"></div>
     <div class="keep-app flex column align-center">
         <section class="keep-header full flex">
             <h1>keep app</h1>
             <note-add @save="saveNote"/>
-            <h1 class="add-link" @click="editNote">Add a new note....</h1>
+            <h1 class="add-link" @click="AddNote">Add a new note....</h1>
         </section>
-        <note-list :notes="notes" />
-        <note-edit :note="selectedNote" />
+        <note-list :notes="notes" v-model="res" @noteAction="actionController($event)"/>
+        <note-edit @save="saveNote" :note="selectedNote" :isScreen="isScreen"/>
     </div>
     
     `,
     data() {
         return {
+            isScreen: false,
             notes: null,
             selectedNote: null,
+            res: null,
+            eventMap: {
+                pin: this.pin,
+                edit: this.edit,
+                mail: this.mail,
+                remove: this.remove
+            }
         }
     },
     created() {
         this.getNotes()
-        eventBus.on('pinNote', this.pinNote)
-        eventBus.on('editNote', this.editNote)
-        eventBus.on('sendNote', this.sendNote)
-        eventBus.on('paintNote', this.paintNote)
-        eventBus.on('removeNote', this.removeNote)
     },
     methods: {
+        actionController({ action, note }) {
+            this.eventMap[action](note)
+        },
+        toggleScreen() {
+            // shutting off modal also resets selectedNote
+            this.isScreen = !this.isScreen
+            if (!this.isScreen) this.selectedNote = null
+        },
         saveNote(note) {
+            this.isScreen = false
             noteService.save(note)
                 .then(res => this.getNotes())
+            //todo send eventbus message
         },
-        pinNote(note) {
+        pin(note) {
             note.isPinned = !note.isPinned
             this.saveNote(note)
         },
-        editNote(note) {
-            this.selectedNote = note
-            eventBus.emit('toggleScreen')
+        AddNote() {
+            this.selectedNote = null
+            this.toggleScreen()
         },
-        sendNote(note) {
+        edit(note) {
+            this.selectedNote = note
+            this.toggleScreen()
+        },
+        mail(note) {
             console.log('sending', note)
         },
-        paintNote(note) {
-            console.log('painting', note)
-        },
-        removeNote(note) {
-            console.log('removing', note)
+        remove(note) {
             noteService.remove(note.id)
                 .then(res => this.getNotes())
         },
@@ -60,9 +74,13 @@ export default {
             noteService.query()
                 .then(notes => {
                     this.notes = notes.sort((a, b) => a.isPinned ? -1 : b.isPinned ? 1 : 0)
-                    console.log(this.notes)
                 })
         },
+    },
+    computed: {
+        screenStyle() {
+            return { on: this.isScreen === true }
+        }
     },
     components: {
         noteAdd,

@@ -37,6 +37,9 @@ function createNewNote() {
         type: 'note-txt',
         isPinned: false,
         style: '#5dacbd',
+        info: {
+            txt: ''
+        }
     }
 }
 
@@ -48,6 +51,7 @@ function _createNotes() {
             {
                 id: utilService.makeId(),
                 type: "note-txt",
+                style: '#5dacbd',
                 isPinned: false,
                 info: {
                     txt: "111111111111"
@@ -56,6 +60,7 @@ function _createNotes() {
             {
                 id: utilService.makeId(),
                 type: "note-txt",
+                style: '#5dacbd',
                 isPinned: false,
                 info: {
                     txt: "22222222222"
@@ -64,6 +69,7 @@ function _createNotes() {
             {
                 id: utilService.makeId(),
                 type: "note-txt",
+                style: '#5dacbd',
                 isPinned: false,
                 info: {
                     txt: "33333333333333"
@@ -72,6 +78,7 @@ function _createNotes() {
             {
                 id: utilService.makeId(),
                 type: "note-txt",
+                style: '#5dacbd',
                 isPinned: true,
                 info: {
                     txt: "4444444444444"

@@ -4,11 +4,11 @@ import { noteService } from "../services/keep-app.service.js"
 import noteAddCmp from "./note-add.cmp.js"
 
 export default {
-    props: ['note'],
+    props: ['note', 'isScreen'],
     template: /*html*/`
     <div class="modal" :class="screenStyle" @submit.prevent="save">
-        <form class="note-edit flex column" v-if="note" >
-            
+        <form class="note-edit flex column" v-if="newNote" >
+        
         <label for="type">Note type:</label>
             <select id="type" v-model="newNote.type">
                 <option value="note-txt">note-txt</option>
@@ -26,20 +26,20 @@ export default {
                 <option value="#ff894c" style="background-color: #ff894c"></option>
             </select>
             
-            <textarea v-if="newNote.type === 'note-txt'" v-model="txt" cols="30" rows="10"></textarea>
+            <textarea v-if="newNote.type === 'note-txt'" v-model="noteInfo[newNote.type].txt" cols="30" rows="10"></textarea>
             
             <ul v-if="newNote.type === 'note-todos'">
                 <h2>Todo:</h2>
-                <input type="text" placeholder="Label..." />
-                <li v-for="(todo, index) in newNote.info.todos || 1">
-                    <input type="text" v-model="todo[index]" />
+                <input type="text" v-model="noteInfo[newNote.type].label" placeholder="Label..." />
+                <li v-for="(todo, index) in noteInfo[newNote.type].todos || 1">
+                    <input type="text" v-model="noteInfo[newNote.type].todos[index]" />
                 </li>
                 <button>Add todo</button>
             </ul>
             
             <div v-if="newNote.type === 'note-img'">
-                <input type="text" placeholder="Image Title..."/>
-                <input type="text" placeholder="Type image url here!"/>
+                <input type="text" v-model="noteInfo[newNote.type].title"  placeholder="Image Title..."/>
+                <input type="text" v-model="noteInfo[newNote.type].url" placeholder="Type image url here!"/>
             </div>
             <button v-if="newNote">Save</button>
         </form>
@@ -47,7 +47,6 @@ export default {
     `,
     data() {
         return {
-            isScreen: false,
             newNote: noteService.createNewNote(),
             noteInfo: {
                 'note-txt': {
@@ -66,29 +65,27 @@ export default {
     },
     watch: {
         note() {
-            if (this.note && this.note.length) this.newNote = this.note
-            console.log('newNote is now', this.newNote)
-            //todo Break the pointer!!
+            if (this.note) {
+                this.newNote = noteService.get(this.note.id)
+                    .then(note => {
+                        this.newNote = note
+                        this.noteInfo[this.newNote.type] = this.newNote.info
+                    })
+            } else {
+                this.newNote = noteService.createNewNote()
+            }
         }
     },
     methods: {
-        toggleScreen() {
-            this.isScreen = !this.isScreen
-        },
-        setScreen(screen) {
-            this.isScreen = !this.isScreen
-        },
-        setType() {
-            console.log(this.type)
-        },
         save() {
-            this.newNote.info = this.noteInfo[this.type]
-            this.$emit('save', newNote)
+            this.newNote.info = this.noteInfo[this.newNote.type]
+            this.$emit('save', this.newNote)
         }
     },
     computed: {
         screenStyle() {
             return { on: this.isScreen === true }
         }
+        //todo ask dvir if this is relevant (same function @ parent)
     },
 }
