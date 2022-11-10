@@ -1,5 +1,3 @@
-// import noteFooter from './note-footer.cmp.js'
-
 export default {
     props: ['note'],
     template: /*html*/`
@@ -17,12 +15,6 @@ export default {
             
         </section>
     `,
-    // methods: {
-    //     onAction() {
-
-    //         this.$emit('noteAction', "{ action: 'edit', note: this.note }")
-    //     },
-    // },
     computed: {
         isPinned() {
             return { hidden: !this.note.isPinned }

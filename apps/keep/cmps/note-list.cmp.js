@@ -1,5 +1,3 @@
-// import { noteService } from '../services/keep-app.service.js'
-
 import notePreview from './note-preview.cmp.js'
 
 export default {
