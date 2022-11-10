@@ -6,47 +6,47 @@ import noteAddCmp from "./note-add.cmp.js"
 export default {
     props: ['note', 'isScreen'],
     template: /*html*/`
-    <div class="modal" :class="screenStyle" @submit.prevent="save">
-        <form class="note-edit flex column" v-if="newNote" >
-        
-        <label for="type">Note type:</label>
-            <select id="type" v-model="newNote.type">
-                <option value="note-txt">note-txt</option>
-                <option value="note-todos">note-todos</option>
-                <option value="note-img">note-img</option>
-            </select>
-            <label for="bgc">Select Color</label>
-            
-            <select id="bgc" v-model="newNote.style" :style="{ 'background-color': newNote.style }">
-                <option value="#5dacbd" style="background-color: #5dacbd;"></option>
-                <option value="#ffc93c" style="background-color: #ffc93c;"></option>
-                <option value="#155263" style="background-color: #155263;"></option>
-                <option value="#ff9a3c" style="background-color: #ff9a3c;"></option>
-                <option value="#ff6f3c" style="background-color: #ff6f3c;"></option>
-                <option value="#ff894c" style="background-color: #ff894c"></option>
-            </select>
-            
-            <textarea v-if="newNote.type === 'note-txt'" v-model="noteInfo[newNote.type].txt" cols="30" rows="10"></textarea>
-            
-            <ul v-if="newNote.type === 'note-todos'">
+    <div class="modal" :class="screenStyle" :style="{ 'background-color': newNote.style }" @submit.prevent="save">
+        <div class="note-options types full flex column">
+            <section class="flex">
+                <img src="../../../assets/images/pin.png" title="Pin this note"  alt="" @click="newNote.isPinned = !newNote.isPinned"/>
+                <img src="../../../assets/images/list.png" title="Todo-list"  alt="" @click="newNote.type = 'note-todos'"/>
+                <img src="../../../assets/images/image.png" title="Add an image"  alt="" @click="newNote.type = 'note-img'"/>
+                <img src="../../../assets/images/text.png" title="Text"  alt="" @click="newNote.type = 'note-txt'"/>
+            </section>
+            <section class="color-picker flex wrap">
+                <div v-for="color in colors" class="color-radio" :style="{ 'background-color': color }" @click="newNote.style = color"></div>
+                
+            </section>
+        </div>    
+         <form class="note-edit flex column" v-if="newNote" >
+            <div class="input-box">
+                <textarea v-if="newNote.type === 'note-txt'" v-model="noteInfo['note-txt'].txt" cols="30" rows="10" required></textarea>
+                <span>Add a message</span>    
+            </div>
+            <ul v-if="newNote.type === 'note-todos'" class="input-box">
                 <h2>Todo:</h2>
-                <input type="text" v-model="noteInfo[newNote.type].label" placeholder="Label..." />
-                <li v-for="(todo, index) in noteInfo[newNote.type].todos || 1">
-                    <input type="text" v-model="noteInfo[newNote.type].todos[index]" />
+                <label for="todoLabel">Label: </label>
+                <input type="text" id="todoLabel" v-model="noteInfo['note-todos'].label" placeholder="Label..." required />
+                <li v-for="(todo, index) in noteInfo['note-todos'].todos">
+                    <input type="text" v-model="noteInfo['note-todos'].todos[index].txt" required/>
+                    <button @click.stop.prevent="noteInfo['note-todos'].todos.splice(index, 1)">X</button>
                 </li>
-                <button>Add todo</button>
+                <button @click.stop.prevent="noteInfo[newNote.type].todos.push({ txt: '', doneAt: null })">Add todo</button>
             </ul>
             
-            <div v-if="newNote.type === 'note-img'">
-                <input type="text" v-model="noteInfo[newNote.type].title"  placeholder="Image Title..."/>
-                <input type="text" v-model="noteInfo[newNote.type].url" placeholder="Type image url here!"/>
+            <div v-if="newNote.type === 'note-img'" class="input-box">
+                <input type="text" v-model="noteInfo['note-img'].title"  placeholder="Image Title..." required/>
+                <input type="text" v-model="noteInfo['note-img'].url" placeholder="Type image url here!" required/>
             </div>
             <button v-if="newNote">Save</button>
         </form>
+     
     </div>
     `,
     data() {
         return {
+            colors: ['#DB2828', '#F2711C', '#FBBD00', '#B5CC18', '#21BA45', '#00B5AD', '#2185D0', '#6435C9', '#A333C8', '#E03997',],
             newNote: noteService.createNewNote(),
             noteInfo: {
                 'note-txt': {
@@ -54,7 +54,7 @@ export default {
                 },
                 'note-todos': {
                     label: '',
-                    todos: []
+                    todos: [{ txt: '', doneAt: null }]
                 },
                 'note-img': {
                     title: '',
@@ -79,7 +79,11 @@ export default {
     methods: {
         save() {
             this.newNote.info = this.noteInfo[this.newNote.type]
+            console.log(this.newNote)
             this.$emit('save', this.newNote)
+        },
+        log(res) {
+            console.log(res)
         }
     },
     computed: {

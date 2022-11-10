@@ -11,7 +11,6 @@ export default {
     <div class="keep-app flex column align-center">
         <section class="keep-header full flex">
             <h1>keep app</h1>
-            <note-add @save="saveNote"/>
             <h1 class="add-link" @click="AddNote">Add a new note....</h1>
         </section>
         <note-list :notes="notes" v-model="res" @noteAction="actionController($event)"/>
