@@ -4,7 +4,6 @@ export default {
             <section class="note flex align-center justify-center" 
             :style="{ 'background-color': note.style }">
             <img class="pin" :class="isPinned" src="../../../assets/images/pin.png" alt="">            
-            {{note.info.txt}}
 
             <div class="note-actions full flex justify-between">
             <img src="../../../assets/images/pin.png" @click="$emit('noteAction', {action:'pin', note})" alt="" />
@@ -18,6 +17,7 @@ export default {
     computed: {
         isPinned() {
             return { hidden: !this.note.isPinned }
-        }
+        },
+        note
     },
 }
