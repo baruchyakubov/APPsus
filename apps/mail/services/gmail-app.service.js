@@ -8,7 +8,8 @@ export const gmailService = {
     save,
     getUser,
     queryCriteria,
-    saveCriteria
+    saveCriteria,
+    sendEmail
 }
 
 const EMAILS_KEY = 'emails'
@@ -21,29 +22,29 @@ function query() {
     return storageService.query(EMAILS_KEY)
 }
 
-function queryCriteria(){
+function queryCriteria() {
     return storageService.query(CRITERIA_KEY)
 }
 
-function _createCriteria(){
-    let criteria =  JSON.parse(localStorage.getItem(CRITERIA_KEY)) 
-    if(!criteria){
+function _createCriteria() {
+    let criteria = JSON.parse(localStorage.getItem(CRITERIA_KEY))
+    if (!criteria) {
         criteria = {
             status: 'inbox',
-            txt: '', 
-            isRead: true, 
-            isStared: false, 
-            lables: ['important', 'romantic'] 
-           }
-           localStorage.setItem(CRITERIA_KEY, JSON.stringify(criteria) || null) 
+            txt: '',
+            isRead: true,
+            isStared: false,
+            lables: ['important', 'romantic']
+        }
+        localStorage.setItem(CRITERIA_KEY, JSON.stringify(criteria) || null)
     }
 }
 
-function getUser(){
+function getUser() {
     return Promise.resolve({
         email: 'user@appsus.com',
         fullname: 'Mahatma Appsus'
-       })
+    })
 }
 
 function get(emailId) {
@@ -51,7 +52,7 @@ function get(emailId) {
 }
 
 function remove(emailId) {
-    return storageService.remove(EMAILS_KEY)
+    return storageService.remove(EMAILS_KEY, emailId)
 }
 
 function save(email) {
@@ -62,185 +63,200 @@ function save(email) {
     }
 }
 
-function saveCriteria(criteria){
+function sendEmail(to, subject, body) {
+    var email = {
+        id: null,
+        subject: subject,
+        body: body,
+        isRead: true,
+        sentAt: Date.now(),
+        from: 'user@appsus.com',
+        to,
+        fullname: 'Mahatma Appsus',
+        status: 'sent'
+    }
+    return save(email)
+}
+
+function saveCriteria(criteria) {
     localStorage.setItem(CRITERIA_KEY, JSON.stringify(criteria) || null)
     return Promise.resolve(criteria)
 }
 
 
 function _createEmails() {
-    let emails =  JSON.parse(localStorage.getItem(EMAILS_KEY)) 
-   
-            if (!emails || !emails.length) {
-                emails = [
-                    {
-                        id: utilService.makeId(),
-                        subject: 'Miss you!',
-                        body: 'Would love to catch up sometimes',
-                        isRead: false,
-                        sentAt: 1551133930594,
-                        from: 'user@appsus.com',
-                        to: 'momo@momo.com',
-                        fullname: 'Mahatma Appsus',
-                        status: 'sent'
-                    },
+    let emails = JSON.parse(localStorage.getItem(EMAILS_KEY))
 
-                    {
-                        id: utilService.makeId(),
-                        subject: 'Miss you!',
-                        body: 'Would love to catch up sometimes',
-                        isRead: true,
-                        sentAt: 1551133930594,
-                        from: 'momo@momo.com',
-                        to: 'user@appsus.com',
-                        fullname: 'puki',
-                        status: 'inbox'
-                    },
-                    {
-                        id: utilService.makeId(),
-                        subject: 'Miss you!',
-                        body: 'Would love to catch up sometimes',
-                        isRead: false,
-                        sentAt: 1551133930594,
-                        from: 'momo@momo.com',
-                        to: 'user@appsus.com',
-                        fullname: 'shuki',
-                        status: 'inbox'
-                    },
-                    {
-                        id: utilService.makeId(),
-                        subject: 'Miss you!',
-                        body: 'Would love to catch up sometimes',
-                        isRead: true,
-                        sentAt: 1551133930594,
-                        from: 'momo@momo.com',
-                        to: 'user@appsus.com',
-                        fullname: 'muki',
-                        status: 'inbox'
-                    },
-                    {
-                        id: utilService.makeId(),
-                        subject: 'Miss you!',
-                        body: 'Would love to catch up sometimes',
-                        isRead: false,
-                        sentAt: 1551133930594,
-                        from: 'momo@momo.com',
-                        to: 'user@appsus.com',
-                        fullname: 'duki',
-                        status: 'inbox'
-                    },
-                    {
-                        id: utilService.makeId(),
-                        subject: 'Miss you!',
-                        body: 'Would love to catch up sometimes',
-                        isRead: false,
-                        sentAt: 1551133930594,
-                        from: 'momo@momo.com',
-                        to: 'user@appsus.com',
-                        fullname: 'pet',
-                        status: 'inbox'
-                    },
-                    {
-                        id: utilService.makeId(),
-                        subject: 'Miss you!',
-                        body: 'Would love to catch up sometimes',
-                        isRead: false,
-                        sentAt: 1551133930594,
-                        from: 'momo@momo.com',
-                        to: 'user@appsus.com',
-                        fullname: 'netflix',
-                        status: 'inbox'
-                    },
-                    {
-                        id: utilService.makeId(),
-                        subject: 'Miss you!',
-                        body: 'Would love to catch up sometimes',
-                        isRead: false,
-                        sentAt: 1551133930594,
-                        from: 'momo@momo.com',
-                        to: 'user@appsus.com',
-                        fullname: 'puki',
-                        status: 'inbox'
-                    },
-                    {
-                        id: utilService.makeId(),
-                        subject: 'Miss you!',
-                        body: 'Would love to catch up sometimes',
-                        isRead: false,
-                        sentAt: 1551133930594,
-                        from: 'momo@momo.com',
-                        to: 'user@appsus.com',
-                        fullname: 'puki',
-                        status: 'inbox'
-                    },
-                    {
-                        id: utilService.makeId(),
-                        subject: 'Miss you!',
-                        body: 'Would love to catch up sometimes',
-                        isRead: true,
-                        sentAt: 1551133930594,
-                        from: 'momo@momo.com',
-                        to: 'user@appsus.com',
-                        fullname: 'puki',
-                        status: 'inbox'
-                    },
-                    {
-                        id: utilService.makeId(),
-                        subject: 'Miss you!',
-                        body: 'Would love to catch up sometimes',
-                        isRead: true,
-                        sentAt: 1551133930594,
-                        from: 'momo@momo.com',
-                        to: 'user@appsus.com',
-                        fullname: 'puki',
-                        status: 'inbox'
-                    },
-                    {
-                        id: utilService.makeId(),
-                        subject: 'Miss you!',
-                        body: 'Would love to catch up sometimes',
-                        isRead: false,
-                        sentAt: 1551133930594,
-                        from: 'momo@momo.com',
-                        to: 'user@appsus.com',
-                        fullname: 'puki',
-                        status: 'inbox'
-                    },
-                    {
-                        id: utilService.makeId(),
-                        subject: 'Miss you!',
-                        body: 'Would love to catch up sometimes',
-                        isRead: true,
-                        sentAt: 1551133930594,
-                        from: 'momo@momo.com',
-                        to: 'user@appsus.com',
-                        fullname: 'puki',
-                        status: 'inbox'
-                    },
-                    {
-                        id: utilService.makeId(),
-                        subject: 'Miss you!',
-                        body: 'Would love to catch up sometimes',
-                        isRead: false,
-                        sentAt: 1551133930594,
-                        from: 'momo@momo.com',
-                        to: 'user@appsus.com',
-                        fullname: 'puki',
-                        status: 'inbox'
-                    },
-                    {
-                        id: utilService.makeId(),
-                        subject: 'Miss you!',
-                        body: 'Would love to catch up sometimes',
-                        isRead: false,
-                        sentAt: 1551133930594,
-                        from: 'momo@momo.com',
-                        to: 'user@appsus.com',
-                        fullname: 'puki',
-                        status: 'inbox'
-                    },
-                ]
-                localStorage.setItem(EMAILS_KEY, JSON.stringify(emails) || null)
-            }
-        }
+    if (!emails || !emails.length) {
+        emails = [
+            {
+                id: utilService.makeId(),
+                subject: 'Miss you!',
+                body: 'Would love to catch up sometimes',
+                isRead: true,
+                sentAt: 1551133930594,
+                from: 'user@appsus.com',
+                to: 'momo@momo.com',
+                fullname: 'Mahatma Appsus',
+                status: 'sent'
+            },
+
+            {
+                id: utilService.makeId(),
+                subject: 'Miss you!',
+                body: 'Would love to catch up sometimes',
+                isRead: true,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'puki',
+                status: 'inbox'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Miss you!',
+                body: 'Would love to catch up sometimes',
+                isRead: false,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'shuki',
+                status: 'inbox'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Miss you!',
+                body: 'Would love to catch up sometimes',
+                isRead: true,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'muki',
+                status: 'inbox'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Miss you!',
+                body: 'Would love to catch up sometimes',
+                isRead: false,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'duki',
+                status: 'inbox'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Miss you!',
+                body: 'Would love to catch up sometimes',
+                isRead: false,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'pet',
+                status: 'inbox'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Miss you!',
+                body: 'Would love to catch up sometimes',
+                isRead: false,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'netflix',
+                status: 'inbox'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Miss you!',
+                body: 'Would love to catch up sometimes',
+                isRead: false,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'puki',
+                status: 'inbox'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Miss you!',
+                body: 'Would love to catch up sometimes',
+                isRead: false,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'puki',
+                status: 'inbox'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Miss you!',
+                body: 'Would love to catch up sometimes',
+                isRead: true,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'puki',
+                status: 'inbox'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Miss you!',
+                body: 'Would love to catch up sometimes',
+                isRead: true,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'puki',
+                status: 'inbox'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Miss you!',
+                body: 'Would love to catch up sometimes',
+                isRead: false,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'puki',
+                status: 'inbox'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Miss you!',
+                body: 'Would love to catch up sometimes',
+                isRead: true,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'puki',
+                status: 'inbox'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Miss you!',
+                body: 'Would love to catch up sometimes',
+                isRead: false,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'puki',
+                status: 'inbox'
+            },
+            {
+                id: utilService.makeId(),
+                subject: 'Miss you!',
+                body: 'Would love to catch up sometimes',
+                isRead: false,
+                sentAt: 1551133930594,
+                from: 'momo@momo.com',
+                to: 'user@appsus.com',
+                fullname: 'puki',
+                status: 'inbox'
+            },
+        ]
+        localStorage.setItem(EMAILS_KEY, JSON.stringify(emails) || null)
+    }
+}
 

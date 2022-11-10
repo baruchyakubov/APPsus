@@ -4,14 +4,54 @@
 }
 
 .white{
-  background-color: beige;
+  background-color: rgb(241, 239, 239);
   font-weight: bold;
 }
 
 .grey{
-  background-color: var(--clr1);
+  background-color: rgb(216, 209, 209);
+}
+
+.gmail-app{
+  background-color: rgb(241, 244, 255);
 }
 
 .email-list{
   margin-top: 20px;
 }
+
+.composed-form{
+  position: fixed;
+  left:100%;
+  top: 100%;
+  transform: translate(-100% , -100%);
+  flex-direction: column;
+ 
+}
+
+.composed-form>*{
+  width: 50vw;
+}
+
+.composed-form textarea{
+  height: 30vh;
+}
+
+.form-header button{
+  background-color: var(--clr1);
+  border: 0px black;
+}
+
+.form-header{
+  background-color: var(--clr1);
+}
+
+.filter-container{
+  flex-direction: column;
+  justify-content: center ; 
+}
+
+
+/* @media (max-height:516px){
+
+} */
