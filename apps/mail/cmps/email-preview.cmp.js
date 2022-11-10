@@ -5,7 +5,7 @@ export default{
     template:`
     <section @click="changeReadState" :class="setColor" class="email-preview flex justify-around align-center">
     <router-link :to="'/gmail-app/' + email.id">
-        <p>{{ email.fullname }}</p>
+        <p class="fullname">{{ email.fullname }}</p>
         <p>{{ email.subject }} - {{ email.body }}</p>
         <p>{{ setDate }}</p>
         </router-link> 
@@ -28,7 +28,7 @@ export default{
         },
         setStatus(){
             if(this.email.status === 'trash'){
-                eventBus.emit('deleteEmail' , this.email)
+                eventBus.emit('deleteEmail' , this.email.id)
                 return 
             }
             this.email.status = 'trash'

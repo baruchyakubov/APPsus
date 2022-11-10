@@ -2,7 +2,7 @@ import { gmailService } from '/apps/mail/services/gmail-app.service.js'
 
 export default{
     template:`
-    <section v-if="email" class="email-details">
+    <section v-if="email" class="email-details main-layout">
     <h1>{{ email.subject }}</h1>
     <h3>{{ setDate }}</h3>
     <h3>[{{ email.fullname }}] <span><{{ email.from }}></span> </h3>

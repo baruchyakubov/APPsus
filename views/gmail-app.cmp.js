@@ -12,7 +12,7 @@ export default {
     template: `
     <section class="gmail-app main-layout ">
     <section class="filter-container flex">
-       <h1>gmail app</h1>
+       <h1>GmailApp<span class="point">.<span></h1>
        <email-filter v-if="criteria" :criteria="criteria" @setCriteria="setCriteria" />
        <email-folder-list v-if="criteria" :criteria="criteria" @setCriteria="setCriteria" @showComposed = "showComposed"/>
     </section>
@@ -66,7 +66,6 @@ export default {
         },
         deleteEmail(emailId){
             gmailService.remove(emailId)
-                  .then(this.emailsToShow)
         },
         showComposed(){
             this.isComposed = true
@@ -80,6 +79,7 @@ export default {
             return this.criteria
         },
         emailsToShow(){
+            console.log('hey');
             const regex = new RegExp(this.criteria.txt, 'i')
             var emails = this.emails.filter(email => regex.test(email.fullname)
             && email.status === this.criteria.status)
