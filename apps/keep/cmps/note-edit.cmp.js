@@ -1,8 +1,6 @@
 import { eventBus } from "../../../services/event-bus.service.js"
 import { noteService } from "../services/keep-app.service.js"
 
-import noteAddCmp from "./note-add.cmp.js"
-
 export default {
     props: ['note', 'isScreen'],
     template: /*html*/`
