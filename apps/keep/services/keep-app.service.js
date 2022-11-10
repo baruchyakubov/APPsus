@@ -51,58 +51,64 @@ function _createNotes() {
             {
                 id: utilService.makeId(),
                 type: "note-txt",
-                style: '#5dacbd',
+                style: '#DB2828',
                 isPinned: false,
                 info: {
-                    txt: "111111111111"
+                    title: 'yasmin 22',
+                    txt: ""
                 }
             },
             {
                 id: utilService.makeId(),
                 type: "note-txt",
-                style: '#5dacbd',
+                style: '#FBBD00',
                 isPinned: false,
                 info: {
-                    txt: "22222222222"
+                    title: 'why of navigation',
+                    txt: "style false why about "
                 }
             },
             {
                 id: utilService.makeId(),
                 type: "note-txt",
-                style: '#5dacbd',
+                style: '#F2711C',
                 isPinned: false,
                 info: {
-                    txt: "33333333333333"
+                    title: 'LAKOVA SHELI',
+                    txt: "shalosh pinNotes"
                 }
             },
             {
                 id: utilService.makeId(),
                 type: "note-txt",
-                style: '#5dacbd',
+                style: '#B5CC18',
                 isPinned: true,
                 info: {
-                    txt: "4444444444444"
+                    title: '0527304928',
+                    txt: "omri's number"
                 }
             },
             {
                 id: utilService.makeId(),
                 type: "note-img",
                 info: {
-                    url: "../../../assets/images/youtube-add.png",
+                    url: "../../../assets/images/keep/demo-image_1.jpg",
                     title: "Bobi and Me"
                 },
-                style: {
-                    backgroundColor: "#00d"
-                }
+                style: '#21BA45'
             },
             {
                 id: utilService.makeId(),
                 type: "note-todos",
+                style: '#00B5AD',
                 info: {
                     label: "Get my stuff together",
                     todos: [
-                        { txt: "Driving liscence", doneAt: null },
-                        { txt: "Coding power", doneAt: 187111111 }
+                        { txt: "Master Css", doneAt: null },
+                        { txt: "Master Vue", doneAt: null },
+                        { txt: "Master jQuery", doneAt: null },
+                        { txt: "Master grid", doneAt: null },
+                        { txt: "Master Yoda", doneAt: null },
                     ]
                 }
             }

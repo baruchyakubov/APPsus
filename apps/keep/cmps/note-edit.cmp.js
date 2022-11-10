@@ -7,7 +7,7 @@ export default {
     <div class="modal" :class="screenStyle" :style="{ 'background-color': newNote.style }" @submit.prevent="save">
         <div class="note-options types full flex column">
             <section class="flex">
-                <img class="icon" src="../../../assets/images/pin.png" title="Pin this note"  alt="" @click="newNote.isPinned = !newNote.isPinned"/>
+                <img class="icon" src="../../../assets/images/pin.png" title="Pin this note"  alt="" @click="newNote.isPinned = !newNote.isPinned" :class="isPinned"/>
                 <img class="icon" src="../../../assets/images/list.png" title="Todo-list"  alt="" @click="newNote.type = 'note-todos'"/>
                 <img class="icon" src="../../../assets/images/image.png" title="Add an image"  alt="" @click="newNote.type = 'note-img'"/>
                 <img class="icon" src="../../../assets/images/text.png" title="Text"  alt="" @click="newNote.type = 'note-txt'"/>
@@ -81,15 +81,32 @@ export default {
             this.newNote.info = this.noteInfo[this.newNote.type]
             console.log(this.newNote)
             this.$emit('save', this.newNote)
+            this.resetInfo()
+            this.newNote = noteService.createNewNote()
         },
-        log(res) {
-            console.log(res)
-        }
+        resetInfo() {
+            this.noteInfo = {
+                'note-txt': {
+                    txt: '',
+                },
+                'note-todos': {
+                    label: '',
+                    todos: [{ txt: '', doneAt: null }]
+                },
+                'note-img': {
+                    title: '',
+                    url: '',
+                }
+            }
+        },
     },
     computed: {
         screenStyle() {
             return { on: this.isScreen === true }
-        }
-        //todo ask dvir if this is relevant (same function @ parent)
+        },
+        isPinned() {
+            return { pinned: this.newNote.isPinned }
+        },
+        //todo ask dvir if this is relevant (same functions exist elsewhere)
     },
 }

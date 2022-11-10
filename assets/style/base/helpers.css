@@ -63,6 +63,9 @@
     content: "\f1b4";
 }
 
+.fa.fa-fort::after{
+    content: "\f3a3"
+}
 /* grid helpers */
 
 .grid {

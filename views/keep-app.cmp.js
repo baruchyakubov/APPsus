@@ -10,8 +10,9 @@ export default {
     <div class="main-screen" @click="toggleScreen" v-bind:class="screenStyle"></div>
     <div class="keep-app flex column align-center">
         <section class="keep-header full flex column">
-            <div class="keep-upper-header flex justify-between">
-                <h1>Note To Worry! Your notes are here:</h1>
+            <div class="keep-upper-header flex justify-between align-center">
+                <h1>Fort Keep<i class="fa fa-fort">&#xf3a3;</i></h1>
+                
                 <button class="add-link" @click="AddNote">Add a new note....</button>
             </div>
             <note-filter @filter="setFilter($event)" />
@@ -31,7 +32,8 @@ export default {
                 pin: this.pin,
                 edit: this.edit,
                 mail: this.mail,
-                remove: this.remove
+                remove: this.remove,
+                copy: this.copy
             },
             filterMap: {
                 'note-txt': this.filterTxtNote,
@@ -72,10 +74,15 @@ export default {
         },
         mail(note) {
             console.log('sending', note)
+            eventBus.emit('mailNote', note)
         },
         remove(note) {
             noteService.remove(note.id)
                 .then(res => this.getNotes())
+        },
+        copy(note) {
+            note.id = null
+            this.saveNote(note)
         },
         getNotes() {
             noteService.query()

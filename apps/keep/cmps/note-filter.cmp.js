@@ -34,6 +34,4 @@ export default {
             return { toggled: this.filter.typesToShow.find(type => type === icon) }
         },
     },
-    computed: {
-    }
 }
