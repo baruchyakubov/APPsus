@@ -23,11 +23,15 @@
     position:relative
 }
 
-.note.pinned{
-    background-color: #ffc93c;
+.pin{
+    filter: invert(91%) sepia(15%) saturate(110%) hue-rotate(139deg) brightness(105%) contrast(84%);
+    position:absolute;
+    height:2em;
+    top:0;
+    left:0;
 }
 
-.note-options{
+.note-actions{
     position: absolute;
     bottom:0;
     background-color: #e0ebeb91;
@@ -37,7 +41,7 @@
     transition: 0.2s;
 }
 
-.note-options:hover{
+.note-actions:hover{
     opacity: 1;
 }
 

@@ -69,3 +69,9 @@
 .full{
     width: 100%;
 }
+
+/* GENERAL */
+
+.hidden{
+    display:none;
+}
