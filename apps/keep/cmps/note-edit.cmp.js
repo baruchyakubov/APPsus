@@ -9,10 +9,10 @@ export default {
     <div class="modal" :class="screenStyle" :style="{ 'background-color': newNote.style }" @submit.prevent="save">
         <div class="note-options types full flex column">
             <section class="flex">
-                <img src="../../../assets/images/pin.png" title="Pin this note"  alt="" @click="newNote.isPinned = !newNote.isPinned"/>
-                <img src="../../../assets/images/list.png" title="Todo-list"  alt="" @click="newNote.type = 'note-todos'"/>
-                <img src="../../../assets/images/image.png" title="Add an image"  alt="" @click="newNote.type = 'note-img'"/>
-                <img src="../../../assets/images/text.png" title="Text"  alt="" @click="newNote.type = 'note-txt'"/>
+                <img class="icon" src="../../../assets/images/pin.png" title="Pin this note"  alt="" @click="newNote.isPinned = !newNote.isPinned"/>
+                <img class="icon" src="../../../assets/images/list.png" title="Todo-list"  alt="" @click="newNote.type = 'note-todos'"/>
+                <img class="icon" src="../../../assets/images/image.png" title="Add an image"  alt="" @click="newNote.type = 'note-img'"/>
+                <img class="icon" src="../../../assets/images/text.png" title="Text"  alt="" @click="newNote.type = 'note-txt'"/>
             </section>
             <section class="color-picker flex wrap">
                 <div v-for="color in colors" class="color-radio" :style="{ 'background-color': color }" @click="newNote.style = color"></div>
@@ -20,19 +20,21 @@ export default {
             </section>
         </div>    
          <form class="note-edit flex column" v-if="newNote" >
-            <div class="input-box">
-                <textarea v-if="newNote.type === 'note-txt'" v-model="noteInfo['note-txt'].txt" cols="30" rows="10" required></textarea>
+            <div class="input-box" v-if="newNote.type === 'note-txt'">
+                <textarea v-model="noteInfo['note-txt'].txt" cols="30" rows="10" required></textarea>
                 <span>Add a message</span>    
             </div>
-            <ul v-if="newNote.type === 'note-todos'" class="input-box">
-                <h2>Todo:</h2>
+            <ul v-if="newNote.type === 'note-todos'" >
+            <h2>Todo:</h2>
+            <div class="flex justify-between">
                 <label for="todoLabel">Label: </label>
                 <input type="text" id="todoLabel" v-model="noteInfo['note-todos'].label" placeholder="Label..." required />
-                <li v-for="(todo, index) in noteInfo['note-todos'].todos">
+                <img class="icon" src="../../../assets/images/add.png" alt="123" @click.stop.prevent="noteInfo[newNote.type].todos.push({ txt: '', doneAt: null })" title="Add a todo!"/>
+            </div>
+                <li v-for="(todo, index) in noteInfo['note-todos'].todos" class="input-box">
                     <input type="text" v-model="noteInfo['note-todos'].todos[index].txt" required/>
-                    <button @click.stop.prevent="noteInfo['note-todos'].todos.splice(index, 1)">X</button>
+                    <button class="delete-todo" @click.stop.prevent="noteInfo['note-todos'].todos.splice(index, 1)">X</button>
                 </li>
-                <button @click.stop.prevent="noteInfo[newNote.type].todos.push({ txt: '', doneAt: null })">Add todo</button>
             </ul>
             
             <div v-if="newNote.type === 'note-img'" class="input-box">
