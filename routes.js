@@ -23,11 +23,14 @@ const routerOptions = {
 		{
 			path: '/gmail-app',
 			component: gmailApp,
+			children:[
+				{
+					path: '/gmail-app/:id',
+					component: emailDetails
+				},
+			]
 		},
-		{
-			path: '/gmail-app/:id',
-			component: emailDetails
-		},
+	
 		{
 			path: '/keep-app',
 			component: keepApp

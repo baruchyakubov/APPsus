@@ -1,7 +1,7 @@
 .email-preview{
   cursor: pointer;
-  /* border: 1px black solid; */
   border-bottom: 0.5px rgb(164, 165, 168) solid;
+  width: 100%;
 }
 
 .white{
@@ -27,6 +27,7 @@
   top: 100%;
   transform: translate(-100% , -100%);
   flex-direction: column;
+  
  
 }
 
@@ -36,6 +37,13 @@
 
 .composed-form textarea{
   height: 30vh;
+  border: 0px black;
+  resize: none;
+}
+
+.to , .subject{
+  border: 0px black;
+  border-bottom: 1px grey solid;
 }
 
 .form-header button{
@@ -46,6 +54,7 @@
 .form-header{
   background-color: var(--clr1);
 }
+
 
 .filter-container{
   flex-direction: column;
@@ -83,18 +92,28 @@ button:hover{
 }
 
 .email-details{
-  /* padding: 20px; */
-  margin-left: 20px;
+  padding: 20px;
+  margin-left: 1.6rem;
+  margin-right: 1.6rem;
   background-color: antiquewhite;
+  margin-top: 20px;
+  border-radius: 10px;
+  
 }
-/* 
-.email-preview{
-  display: grid;
-  grid-template-columns: 1fr 1fr 1fr 1fr;
-  grid-template-rows: 1fr;
-} */
 
+.email-details h1{
+  font-size: x-large;
+}
 
-/* @media (max-height:516px){
+.app-footer{
+  margin-top: 20px;
+}
 
-} */
+.preview{
+  gap: 130px;
+}
+
+.delete{
+  height: 8px;
+  width: 8px;
+}

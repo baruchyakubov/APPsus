@@ -3,13 +3,11 @@ export default {
     template: `
     <section  class="filter-container">
         <input v-model="inputSearch" @input="setSearch" type="search" placeholder="Search" />
-        <!-- <label>
-                <select v-model="readUnread" @change="setIsRead">  
-                    <option>All</option>
-                    <option>Read</option>
-                    <option>Unread</option>
-                </select>
-        </label>   -->
+        <!-- <select class="sort-by">
+            <option value="">sort by</option>
+            <option value="name">title</option>
+            <option value="last-login">date</option>
+        </select> -->
     </section>
     `,
     data() {

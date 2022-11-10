@@ -6,8 +6,8 @@ export default{
         <header class="form-header">
             <button @click="hideComposed">X</button>
         </header>
-        <input v-model="to" type="text" placeholder="To" />
-        <input v-model="subject" type="text" placeholder="Subject" />
+        <input class="to" v-model="to" type="text" placeholder="To" />
+        <input class="subject" v-model="subject" type="text" placeholder="Subject" />
         <textarea v-model="body" name="" id="" cols="30" rows="10"></textarea>
         <button @click.prevent="sendMessage">send</button>
     </form>

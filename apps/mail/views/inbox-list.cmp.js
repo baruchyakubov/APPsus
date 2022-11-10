@@ -5,10 +5,9 @@ export default {
     template:`
     <section class="email-list">
         <ul class="clean-list">
-            <li class="email-preview" v-for="email in emails" :key="email.id">
+            <li @click="openEmail(email.id)" class="email-preview" v-for="email in emails" :key="email.id">
             
                 <email-preview :email ="email"/>
-             
             </li>
         </ul>
     </section>
@@ -18,5 +17,11 @@ export default {
     },
     components:{
         emailPreview
+    },
+    methods:{
+        openEmail(emailId){
+            this.$emit('hideList')
+            this.$router.push(`/gmail-app/${emailId}`)
+        }
     }
 }

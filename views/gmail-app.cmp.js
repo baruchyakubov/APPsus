@@ -17,8 +17,9 @@ export default {
        <email-folder-list v-if="criteria" :criteria="criteria" @setCriteria="setCriteria" @showComposed = "showComposed"/>
     </section>
    
-    <email-list v-if="emails" :emails="emailsToShow" />
+    <email-list @hideList="hideList" v-if="emails && !isSelectedEmail" :emails="emailsToShow" />
     <email-composed v-if="isComposed" @hideComposed="hideComposed"/>
+    <router-view></router-view>
     </section>
    
     `,
@@ -26,7 +27,8 @@ export default {
         return {
             emails: null,
             criteria: {},
-            isComposed:false
+            isComposed:false,
+            isSelectedEmail:false
         }
 
     },
@@ -42,6 +44,7 @@ export default {
         eventBus.on('changeReadState', this.changeReadState)
         eventBus.on('saveEmailStatus', this.setEmailStatus)
         eventBus.on('deleteEmail', this.deleteEmail)
+        eventBus.on('showList' , this.showList)
     },
     components: {
         emailFilter,
@@ -72,6 +75,12 @@ export default {
         },
         hideComposed(){
             this.isComposed = false
+        },
+        hideList(){
+            this.isSelectedEmail = true
+        },
+        showList(){
+            this.isSelectedEmail = false
         }
     },
     computed:{

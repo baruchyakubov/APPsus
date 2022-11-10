@@ -4,12 +4,12 @@ export default{
     props:['email'],
     template:`
     <section @click="changeReadState" :class="setColor" class="email-preview flex justify-around align-center">
-    <router-link :to="'/gmail-app/' + email.id">
-        <p class="fullname">{{ email.fullname }}</p>
-        <p>{{ email.subject }} - {{ email.body }}</p>
-        <p>{{ setDate }}</p>
-        </router-link> 
-        <button @click.stop="setStatus">DELETE</button>
+        <section class="preview flex justify-around align-center">
+            <p>{{ email.fullname }}</p>
+            <p>{{ email.subject }} - {{ email.body }}</p>
+            <p>{{ setDate }}</p>
+        </section>
+        <button class="delete" @click.stop="setStatus"><img src="assets/images/delete.png" alt="" /></button>
     </section>   
     `,
     computed:{
@@ -22,7 +22,6 @@ export default{
     },
     methods:{
         changeReadState(){
-
             this.email.isRead = !this.email.isRead
             eventBus.emit('changeReadState' , this.email)
         },

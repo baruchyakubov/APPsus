@@ -88,6 +88,7 @@ function _createEmails() {
     let emails = JSON.parse(localStorage.getItem(EMAILS_KEY))
 
     if (!emails || !emails.length) {
+        console.log('storage');
         emails = [
             {
                 id: utilService.makeId(),
@@ -104,7 +105,7 @@ function _createEmails() {
             {
                 id: utilService.makeId(),
                 subject: 'Miss you!',
-                body: 'Would love to catch up sometimes',
+                body: 'Would love to catch up sometimes fgdd',
                 isRead: true,
                 sentAt: 1551133930594,
                 from: 'momo@momo.com',

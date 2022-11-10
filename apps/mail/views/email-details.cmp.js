@@ -1,4 +1,5 @@
 import { gmailService } from '/apps/mail/services/gmail-app.service.js'
+import { eventBus } from '../../../services/event-bus.service.js'
 
 export default{
     template:`
@@ -11,7 +12,7 @@ export default{
 Thankes,
 {{ email.fullname }}
     </pre>
-    <router-link to='/gmail-app'><button>return</button></router-link>
+    <button @click="showList">return</button>
     </section>
     
     `,
@@ -29,5 +30,12 @@ Thankes,
         setDate(){
           return new Date(this.email.sentAt).toLocaleDateString()
         }
+    },
+    methods:{
+      showList(){
+        eventBus.emit('showList')
+        this.$router.push('/gmail-app')
+        
+      }
     }
 }
