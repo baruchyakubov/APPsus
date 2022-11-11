@@ -3,6 +3,7 @@ import { eventBus } from '../../../services/event-bus.service.js'
 
 export default{
     template:`
+    <section class="details-container">
     <section v-if="email" class="email-details main-layout">
     <h1>{{ email.subject }}</h1>
     <h3>{{ setDate }}</h3>
@@ -14,6 +15,8 @@ Thankes,
     </pre>
     <button @click="showList">return</button>
     </section>
+    </section>
+    
     
     `,
     data(){

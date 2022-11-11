@@ -1,8 +1,56 @@
-.email-preview{
+li{
+  padding: 10px;
   cursor: pointer;
   border-bottom: 0.5px rgb(164, 165, 168) solid;
-  width: 100%;
+  display: grid;
+  grid-template-columns: 20% 40% 20% 20%;
+  align-items: center;
+  justify-items: flex-start;
 }
+li:hover{
+  border-bottom: 3px rgb(164, 165, 168) solid;
+}
+::-webkit-scrollbar{
+  width: 10px;
+}
+::-webkit-scrollbar-track{
+  border-radius: 10px;
+  background: rgb(226, 231, 233);
+}
+
+::-webkit-scrollbar-thumb{
+  border-radius: 10px;
+  background: rgb(182, 170, 192);
+}
+
+ul{
+  padding: 20px;
+  height: 50vh;
+  overflow-y:auto;
+  border-radius: 10px;
+}
+
+.email-list{
+  padding: 20px;
+  background-color: rgb(197, 183, 183);
+  border-radius: 10px;
+}
+
+*{
+  font-family: Fuzzy Bubbles;
+}
+
+@media (max-width:658px){
+  li{
+   display: flex;
+   flex-direction: column;
+  }
+}
+
+.date-preview{
+  justify-self: flex-end;
+}
+
 
 .white{
   background-color: rgb(241, 239, 239);
@@ -32,7 +80,7 @@
 }
 
 .composed-form>*{
-  width: 50vw;
+  width: 35vw;
 }
 
 .composed-form textarea{
@@ -63,8 +111,16 @@
   gap: 20px;
 }
 
+.search{
+  border-radius: 10px;
+  border: 0.5px grey solid;
+  width: 300px;
+  background-color: rgb(247, 244, 255);
+}
+
 .filter-container h1{
   font-size: 60px;
+  margin-bottom: 0px;
 }
 
 .point{
@@ -86,19 +142,37 @@ button{
   transition: 1s;
 }
 
+@media (max-width:658px){
+  button{
+   font-size: small;
+   padding: 2px;
+  }
+  .search{
+    width: 220px;
+  }
+  .composed-form>*{
+    width: 98vw;
+  }
+}
+
 button:hover{
   background-color: rgb(151, 146, 146);
-  font-size: x-large;
+  /* font-size: x-large; */
+}
+
+.details-container{
+  margin-top: 20px;
+  padding: 20px;
+  background-color: rgb(197, 183, 183);
+  border-radius: 10px;
 }
 
 .email-details{
+  overflow-y: auto;
+  height: 50vh;
   padding: 20px;
-  margin-left: 1.6rem;
-  margin-right: 1.6rem;
   background-color: antiquewhite;
-  margin-top: 20px;
   border-radius: 10px;
-  
 }
 
 .email-details h1{
@@ -109,11 +183,8 @@ button:hover{
   margin-top: 20px;
 }
 
-.preview{
-  gap: 130px;
-}
-
 .delete{
   height: 8px;
   width: 8px;
+  justify-self: center;
 }

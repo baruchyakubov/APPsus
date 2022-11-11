@@ -4,7 +4,7 @@ export default{
     template:`
     <form class="composed-form flex">
         <header class="form-header">
-            <button @click="hideComposed">X</button>
+            <router-link to="/gmail-App"><button>X</button></router-link>
         </header>
         <input class="to" v-model="to" type="text" placeholder="To" />
         <input class="subject" v-model="subject" type="text" placeholder="Subject" />
@@ -31,10 +31,10 @@ export default{
         sendMessage(){
             if(this.to === '') return
             gmailService.sendEmail(this.to , this.subject , this.body)
-                 .then(this.$emit('hideComposed'))
+                 .then(this.$router.push('/gmail-App'))
         },
-        hideComposed(){
-            this.$emit('hideComposed')
-        }
+        // hideComposed(){
+        //     this.$emit('hideComposed')
+        // }
     }
 }

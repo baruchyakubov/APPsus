@@ -6,6 +6,7 @@ import gmailApp from './views/gmail-app.cmp.js'
 
 
 import emailDetails from '../apps/mail/views/email-details.cmp.js'
+import emailComposed from '../apps/mail/cmps/email-compose.cmp.js'
 
 const { createRouter, createWebHashHistory } = VueRouter
 
@@ -28,6 +29,10 @@ const routerOptions = {
 					path: '/gmail-app/:id',
 					component: emailDetails
 				},
+				{
+					path: '/gmail-app/compose',
+					component: emailComposed
+				}
 			]
 		},
 	

@@ -5,8 +5,7 @@ export default {
     template:`
     <section class="email-list">
         <ul class="clean-list">
-            <li @click="openEmail(email.id)" class="email-preview" v-for="email in emails" :key="email.id">
-            
+            <li  @click="changeReadState(email)" :class="{white:!email.isRead , grey:email.isRead}" @click="openEmail(email.id)" class="email-preview" v-for="email in emails" :key="email.id">
                 <email-preview :email ="email"/>
             </li>
         </ul>
@@ -22,6 +21,10 @@ export default {
         openEmail(emailId){
             this.$emit('hideList')
             this.$router.push(`/gmail-app/${emailId}`)
+        },
+        changeReadState(email){
+            email.isRead = !email.isRead
+            this.$emit('changeReadState' , email)
         }
     }
 }

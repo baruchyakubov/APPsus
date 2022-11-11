@@ -5,7 +5,7 @@ import emailList from '../apps/mail/views/inbox-list.cmp.js'
 
 import emailFolderList from '../apps/mail/cmps/email-folder-list.cmp.js'
 import emailFilter from '../apps/mail/cmps/email-filter.cmp.js'
-import emailComposed from '../apps/mail/cmps/email-compose.cmp.js'
+
 
 
 export default {
@@ -17,8 +17,8 @@ export default {
        <email-folder-list v-if="criteria" :criteria="criteria" @setCriteria="setCriteria" @showComposed = "showComposed"/>
     </section>
    
-    <email-list @hideList="hideList" v-if="emails && !isSelectedEmail" :emails="emailsToShow" />
-    <email-composed v-if="isComposed" @hideComposed="hideComposed"/>
+    <email-list @changeReadState="changeReadState" @hideList="hideList" v-if="emails && !isSelectedEmail" :emails="emailsToShow" />
+    <!-- <email-composed v-if="isComposed" @hideComposed="hideComposed"/> -->
     <router-view></router-view>
     </section>
    
@@ -27,7 +27,7 @@ export default {
         return {
             emails: null,
             criteria: {},
-            isComposed:false,
+            // isComposed:false,
             isSelectedEmail:false
         }
 
@@ -41,16 +41,16 @@ export default {
             gmailService.queryCriteria()
                 .then(criteria => {this.criteria = criteria})
 
-        eventBus.on('changeReadState', this.changeReadState)
         eventBus.on('saveEmailStatus', this.setEmailStatus)
         eventBus.on('deleteEmail', this.deleteEmail)
         eventBus.on('showList' , this.showList)
+        eventBus.on('mailNote' , this.sendNote)
     },
     components: {
         emailFilter,
         emailFolderList,
         emailList,
-        emailComposed
+        // emailComposed
     },
     methods: {
         changeReadState(book) {
@@ -58,6 +58,10 @@ export default {
             gmailService.save(book)
         },
         setCriteria(updatedCriteria){
+            if(this.isSelectedEmail){
+                this.$router.push('/gmail-app')
+                this.isSelectedEmail = false
+            } 
             gmailService.saveCriteria(updatedCriteria)
                 .then(criteria => {
                     this.criteria === criteria
@@ -70,17 +74,22 @@ export default {
         deleteEmail(emailId){
             gmailService.remove(emailId)
         },
-        showComposed(){
-            this.isComposed = true
-        },
-        hideComposed(){
-            this.isComposed = false
-        },
+        // showComposed(){
+        //     this.isComposed = true
+        // },
+        // hideComposed(){
+        //     this.isComposed = false
+        // },
         hideList(){
             this.isSelectedEmail = true
         },
         showList(){
             this.isSelectedEmail = false
+        },
+        sendNote(note){
+           console.log(note);
+        //    this.isComposed = true 
+           console.log('email')
         }
     },
     computed:{

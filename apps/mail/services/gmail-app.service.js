@@ -104,30 +104,30 @@ function _createEmails() {
 
             {
                 id: utilService.makeId(),
-                subject: 'Miss you!',
-                body: 'Would love to catch up sometimes fgdd',
+                subject: 'Now launched: new routing and address capabilities',
+                body: 'Now launched! New routing and address capabilities Routes API, eco-friendly routing, and Address Validation have launched. Explore the new documentation and demos today.',
                 isRead: true,
                 sentAt: 1551133930594,
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
-                fullname: 'puki',
+                fullname: 'Google Maps Platform',
                 status: 'inbox'
             },
             {
                 id: utilService.makeId(),
                 subject: 'Miss you!',
-                body: 'Would love to catch up sometimes',
+                body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
                 isRead: false,
                 sentAt: 1551133930594,
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
-                fullname: 'shuki',
-                status: 'inbox'
+                fullname: 'MyFitnessPal',
+                status: 'Can you believe these dishes are under 350 calories?'
             },
             {
                 id: utilService.makeId(),
                 subject: 'Miss you!',
-                body: 'Would love to catch up sometimes',
+                body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
                 isRead: true,
                 sentAt: 1551133930594,
                 from: 'momo@momo.com',
@@ -138,7 +138,7 @@ function _createEmails() {
             {
                 id: utilService.makeId(),
                 subject: 'Miss you!',
-                body: 'Would love to catch up sometimes',
+                body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
                 isRead: false,
                 sentAt: 1551133930594,
                 from: 'momo@momo.com',
@@ -149,7 +149,7 @@ function _createEmails() {
             {
                 id: utilService.makeId(),
                 subject: 'Miss you!',
-                body: 'Would love to catch up sometimes',
+                body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
                 isRead: false,
                 sentAt: 1551133930594,
                 from: 'momo@momo.com',
@@ -160,7 +160,7 @@ function _createEmails() {
             {
                 id: utilService.makeId(),
                 subject: 'Miss you!',
-                body: 'Would love to catch up sometimes',
+                body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
                 isRead: false,
                 sentAt: 1551133930594,
                 from: 'momo@momo.com',
@@ -171,7 +171,7 @@ function _createEmails() {
             {
                 id: utilService.makeId(),
                 subject: 'Miss you!',
-                body: 'Would love to catch up sometimes',
+                body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
                 isRead: false,
                 sentAt: 1551133930594,
                 from: 'momo@momo.com',
@@ -182,7 +182,7 @@ function _createEmails() {
             {
                 id: utilService.makeId(),
                 subject: 'Miss you!',
-                body: 'Would love to catch up sometimes',
+                body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
                 isRead: false,
                 sentAt: 1551133930594,
                 from: 'momo@momo.com',
@@ -193,7 +193,7 @@ function _createEmails() {
             {
                 id: utilService.makeId(),
                 subject: 'Miss you!',
-                body: 'Would love to catch up sometimes',
+                body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
                 isRead: true,
                 sentAt: 1551133930594,
                 from: 'momo@momo.com',
@@ -204,7 +204,7 @@ function _createEmails() {
             {
                 id: utilService.makeId(),
                 subject: 'Miss you!',
-                body: 'Would love to catch up sometimes',
+                body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
                 isRead: true,
                 sentAt: 1551133930594,
                 from: 'momo@momo.com',
@@ -215,7 +215,7 @@ function _createEmails() {
             {
                 id: utilService.makeId(),
                 subject: 'Miss you!',
-                body: 'Would love to catch up sometimes',
+                body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
                 isRead: false,
                 sentAt: 1551133930594,
                 from: 'momo@momo.com',
@@ -226,7 +226,7 @@ function _createEmails() {
             {
                 id: utilService.makeId(),
                 subject: 'Miss you!',
-                body: 'Would love to catch up sometimes',
+                body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
                 isRead: true,
                 sentAt: 1551133930594,
                 from: 'momo@momo.com',
@@ -237,7 +237,7 @@ function _createEmails() {
             {
                 id: utilService.makeId(),
                 subject: 'Miss you!',
-                body: 'Would love to catch up sometimes',
+                body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
                 isRead: false,
                 sentAt: 1551133930594,
                 from: 'momo@momo.com',
@@ -248,7 +248,7 @@ function _createEmails() {
             {
                 id: utilService.makeId(),
                 subject: 'Miss you!',
-                body: 'Would love to catch up sometimes',
+                body: 'Roasted Vegetable Salad with Maple Orange Cinnamon Dressing This Roasted Root recipe features butternut squash, crunchy pecans, sweet beets, and a dressing that will have you drooling.',
                 isRead: false,
                 sentAt: 1551133930594,
                 from: 'momo@momo.com',

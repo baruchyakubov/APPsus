@@ -6,7 +6,7 @@ export default{
         <button @click="setStatusInbox">Inbox</button>
         <button @click="setStatusSent">Sent</button>
         <button @click="setStatusTrash">trash</button>
-        <button @click="showComposed">Composed</button>
+        <router-link to="/gmail-app/compose"><button>Compose</button></router-link>
     </section>
     `,
     methods:{
@@ -22,8 +22,8 @@ export default{
            this.criteria.status = 'trash'
             this.$emit('setCriteria' , this.criteria) 
         },
-        showComposed(){
-            this.$emit('showComposed') 
-        }
+        // showComposed(){
+        //     this.$emit('showComposed') 
+        // }
     }
 }

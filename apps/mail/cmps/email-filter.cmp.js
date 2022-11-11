@@ -2,7 +2,7 @@ export default {
     props: ['criteria'],
     template: `
     <section  class="filter-container">
-        <input v-model="inputSearch" @input="setSearch" type="search" placeholder="Search" />
+        <input class="search" v-model="inputSearch" @input="setSearch" type="search" placeholder="Search" />
         <!-- <select class="sort-by">
             <option value="">sort by</option>
             <option value="name">title</option>
