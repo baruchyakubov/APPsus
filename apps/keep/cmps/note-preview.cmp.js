@@ -21,7 +21,7 @@ export default {
             <h1 class="note-header">{{note.info.title}}</h1>
             <img class="note-content"  :src="note.info.url" alt="123" />
         </div>
-        <div class="note-options actions full flex">
+        <div class="note-options actions full flex" :class="isPinned" :style="{ 'background-color': note.style , 'border-color': note.style }">
             <img class="icon" src="../../../assets/images/pin.png" title="pin this note" @click="$emit('noteAction', { action: 'pin', note: this.note })" alt="" :class="isPinned" 
             @mouseover="isFakePinned = !isFakePinned" @mouseleave="isFakePinned = !isFakePinned"/>
             <img class="icon" src="../../../assets/images/edit.png" title="edit this note" @click="$emit('noteAction', {action:'edit', note})" alt="" />

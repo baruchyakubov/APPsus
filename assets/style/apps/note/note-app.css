@@ -1,5 +1,6 @@
 .keep-app{
     font-size: 10px;
+    font-family:latin;
 }
 
 .keep-header{
@@ -55,7 +56,7 @@
 
 .note{
     background-color: var(--clr3);
-    z-index: 2;
+    z-index: 1;
     break-inside: avoid;
     font-size: 2em;
     position:relative;
@@ -65,27 +66,28 @@
     min-height: 7em;
     max-width: 19.2em;
     margin-block-end: 1.4em;
-    overflow: hidden;
     text-align: center;
 }
 
 .note:hover{
-    /* padding-block-end: 2.5em; */
+    border-end-end-radius: 0;
+    border-end-start-radius: 0;
 }
 
 .note:hover + .note{
-    font-size: small;
     z-index: 0;
+    transform: translateY(1.6em);
 }
 .note:hover > .note-options.actions{
-    /* transform: translateY(100%); */
-    background-color: #435552;
+    transform: translateY(2.9em);
+}
+
+.note:hover > .note-options.actions.pinned{
+    transform: translateY(3.5em);
 }
 
 .note:hover > .icon.duplicate,
 .note:hover > .note-options.actions{
-
-    cursor: pointer;
     opacity:1;
 }
 .note.pinned{
@@ -98,9 +100,8 @@
 }
 
 .note-content{
-    /* width: 90%; */
-    /* margin-inline: auto; */
     transition:0.2s;
+    transition-delay: 0.3s
 }
 
 img.note-content{
@@ -131,11 +132,21 @@ img.note-content{
     transition: 0.2s;
 }
 .note-options.actions{
+    background-color: #42b883;
     position: absolute;
-    z-index: 1;
+    z-index: -1;
     bottom:0;
     opacity: 0;
     transition-delay: 0.3s;
+    border-end-end-radius: 1em;
+    border-end-start-radius: 1em;
+    border: #42b883 solid 0.3em;
+}
+
+.note-options.actions.pinned {
+    outline: #f8b400 outset 0.3em;
+    box-shadow: 5px 5px 10px 5px rgba(0,0,0,0.7);
+
 }
 
 
@@ -266,32 +277,33 @@ img.note-content{
     font-size: 1.5em;
     font-weight: 700;
     transition: 0.4s;
-    
+    user-select: none;
 }
+
 .input-box textarea{
     font-family:latin;
 }
  
  .input-box input:focus ~ span,
- .input-box textarea:focus ~ span{
+ .input-box input:valid ~ span,
+ .input-box textarea:focus ~ span,
+ .input-box textarea:valid ~ span{
     background-color: transparent;
-    transform: translateX(1em) translateY(-0.45em);
+    transform: translateX(1em) translateY(-0.1em);
     font-size: 1.3em;
     padding: 0 0.6em;
     letter-spacing: 0.1em;
 }
 
-.input-box input:valid ~ span,
-.input-box textarea:valid ~ span{
+/* 
+{
     opacity:0;
-    user-select: none;
-}
+} */
 
- .input-box input:valid,
+ /* .input-box input:valid,
 .input-box textarea:valid{
     background-color: transparent;
-
-}
+} */
 
 .input-box input:focus,
  .input-box textarea:focus{
