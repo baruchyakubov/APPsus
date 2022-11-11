@@ -10,7 +10,7 @@ li{
 li:hover{
   border-bottom: 3px rgb(164, 165, 168) solid;
 }
-::-webkit-scrollbar{
+/* ::-webkit-scrollbar{
   width: 10px;
 }
 ::-webkit-scrollbar-track{
@@ -21,7 +21,7 @@ li:hover{
 ::-webkit-scrollbar-thumb{
   border-radius: 10px;
   background: rgb(182, 170, 192);
-}
+} */
 
 ul{
   padding: 20px;
@@ -36,9 +36,9 @@ ul{
   border-radius: 10px;
 }
 
-*{
+/* *{
   font-family: Fuzzy Bubbles;
-}
+} */
 
 @media (max-width:658px){
   li{

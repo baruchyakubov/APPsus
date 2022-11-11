@@ -44,7 +44,6 @@ export default {
         eventBus.on('saveEmailStatus', this.setEmailStatus)
         eventBus.on('deleteEmail', this.deleteEmail)
         eventBus.on('showList' , this.showList)
-        eventBus.on('mailNote' , this.sendNote)
     },
     components: {
         emailFilter,
@@ -85,11 +84,6 @@ export default {
         },
         showList(){
             this.isSelectedEmail = false
-        },
-        sendNote(note){
-           console.log(note);
-        //    this.isComposed = true 
-           console.log('email')
         }
     },
     computed:{

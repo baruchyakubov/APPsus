@@ -1,4 +1,5 @@
 import { gmailService } from "../services/gmail-app.service.js"
+import { eventBus } from "../../../services/event-bus.service.js"
 
 export default{
     template:`
@@ -17,8 +18,7 @@ export default{
             username:'',
             to: '',
             subject:'',
-            body:''
-
+            body:'',
         }
     },
     created(){
@@ -26,6 +26,7 @@ export default{
             .then(username => {
                 this.username = username
             })
+            eventBus.on('mailNote' , this.sendNote)
     },
     methods:{
         sendMessage(){
@@ -33,6 +34,12 @@ export default{
             gmailService.sendEmail(this.to , this.subject , this.body)
                  .then(this.$router.push('/gmail-App'))
         },
+        sendNote(note){
+            // console.log(note.info.txt);
+           this.body = note.info.txt
+           console.log(this.body)
+        //    document.querySelector('.body-txt').innerText = note.info.txt
+        }
         // hideComposed(){
         //     this.$emit('hideComposed')
         // }

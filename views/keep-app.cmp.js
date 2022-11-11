@@ -74,8 +74,9 @@ export default {
         },
         mail(note) {
             console.log('sending', note)
-            eventBus.emit('mailNote', note)
             this.$router.push('/gmail-app/compose')
+            eventBus.emit('mailNote', note)
+            
         },
         remove(note) {
             noteService.remove(note.id)
