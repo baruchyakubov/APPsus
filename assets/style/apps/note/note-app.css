@@ -38,32 +38,58 @@
 
 .note-list{
     max-width: 1340px;
-    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-    grid-auto-rows: 400px;
+    column-width: 18em;
     padding:1em;
-    gap: 1.4em;
+    column-gap: 1.4em;
     margin: auto;
-}
+    /* padding-bottom: 10em; */
 
+}
+/* .note-list.pinned-list{
+    column-span: all;
+    padding-inline: 0;
+} */
 .note{
     background-color: var(--clr3);
+    break-inside: avoid;
     font-size: 2em;
     position:relative;
     border-radius:1em;
     transition: 0.2s;
-    height: max-content;
+    transition-delay: 0.3s;
+    min-height: 6em;
+    max-width: 12em;
+    margin-block-end: 1.4em;
+    overflow: hidden;
+}
+
+.note:hover{
     padding-block-end: 2.5em;
 }
+
+/* .note-list:has(.note:hover) > .note:not(.note:hover){
+    break-inside: auto;
+} */
 
 .note.pinned{
     outline: #f8b400 outset 0.3em;
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.7);
 }
 
+.note-header{
+    margin-block-end: 0.4em;
+}
+
 .note-content{
     object-fit: contain;
+    border-end-end-radius: 1em;
+    border-end-start-radius: 1em;
     max-width: 100%;
-    /* margin-block-start: calc(auto - 3em); */
+    transition:0.2s;
+}
+
+.note:hover .note-content{
+    border-radius: 0;
 }
 
 .pin{
@@ -84,8 +110,11 @@
     top: 0.1em;
     right: 0.1em;
     opacity: 0;
+    transition-delay: 0.3s;
 }
-.note:hover > .icon.duplicate{
+.note:hover > .icon.duplicate,
+.note:hover > .note-options.actions{
+    cursor: pointer;
     opacity:1;
 }
 
@@ -99,11 +128,10 @@
     position: absolute;
     bottom:0;
     opacity: 0;
+    transition-delay: 0.3s;
 }
 
-.note-options.actions:hover{
-    opacity: 1;
-}
+
 
 .icon{
     cursor: pointer;

@@ -11,7 +11,7 @@ export default {
     <div class="keep-app flex column align-center">
         <section class="keep-header full flex column">
             <div class="keep-upper-header flex justify-between align-center">
-                <h1>Fort Keep<i class="fa fa-fort">&#xf3a3;</i></h1>
+                <h1>Fort Keep</h1>
                 
                 <button class="add-link" @click="AddNote">Add a new note....</button>
             </div>

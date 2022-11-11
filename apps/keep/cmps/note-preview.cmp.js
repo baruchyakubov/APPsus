@@ -22,17 +22,22 @@ export default {
             <img class="note-content"  :src="note.info.url" alt="123" />
         </div>
         <div class="note-options actions full flex">
-            <img class="icon" src="../../../assets/images/pin.png" title="pin this note" @click="$emit('noteAction', {action:'pin', note})" alt="" :class="isPinned" />
+            <img class="icon" src="../../../assets/images/pin.png" title="pin this note" @click="$emit('noteAction', { action: 'pin', note: this.note })" alt="" :class="isPinned" 
+            @mouseover="isFakePinned = !isFakePinned" @mouseleave="isFakePinned = !isFakePinned"/>
             <img class="icon" src="../../../assets/images/edit.png" title="edit this note" @click="$emit('noteAction', {action:'edit', note})" alt="" />
             <img class="icon" src="../../../assets/images/mail.png" title="send this note via gMail" @click="$emit('noteAction', {action: 'mail', note})" alt="" />
             <img class="icon" src="../../../assets/images/delete.png" title="delete this note" @click="$emit('noteAction', {action:'remove', note})" alt="" />
         </div>
-            
     </section>
     `,
+    data() {
+        return {
+            isFakePinned: false,
+        }
+    },
     computed: {
         isPinned() {
-            return { pinned: this.note.isPinned }
+            return { pinned: this.note.isPinned || this.isFakePinned }
         },
         type() {
             const type = this.note.type
