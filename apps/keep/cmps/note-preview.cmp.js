@@ -11,7 +11,7 @@ export default {
         </div>
 
         <div class="flex column" v-if="note.type === 'note-todos'">
-            <h1 class="note-header">{{note.info.label}}</h1>
+            <h1 class="note-header">{{note.info.title}}</h1>
             <ul class="note-content" >
                 <li v-for="todo in note.info.todos">{{todo.txt}}</li>
             </ul>
@@ -21,7 +21,7 @@ export default {
             <h1 class="note-header">{{note.info.title}}</h1>
             <img class="note-content"  :src="note.info.url" alt="123" />
         </div>
-        <div class="note-options actions full flex" :class="isPinned" :style="{ 'background-color': note.style , 'border-color': note.style }">
+        <div class="note-options actions full flex" :class="isPinned" :style="{ 'background-color': note.style }">
             <img class="icon" src="../../../assets/images/pin.png" title="pin this note" @click="$emit('noteAction', { action: 'pin', note: this.note })" alt="" :class="isPinned" 
             @mouseover="isFakePinned = !isFakePinned" @mouseleave="isFakePinned = !isFakePinned"/>
             <img class="icon" src="../../../assets/images/edit.png" title="edit this note" @click="$emit('noteAction', {action:'edit', note})" alt="" />

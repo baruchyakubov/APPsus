@@ -44,6 +44,7 @@ export default {
     },
     created() {
         this.getNotes()
+        eventBus.on('convertMail', this.convert)
     },
     methods: {
         actionController({ action, note }) {
@@ -55,6 +56,7 @@ export default {
             if (!this.isScreen) this.selectedNote = null
         },
         saveNote(note) {
+            debugger
             this.isScreen = false
             noteService.save(note)
                 .then(res => this.getNotes())
@@ -73,10 +75,13 @@ export default {
             this.toggleScreen()
         },
         mail(note) {
-            console.log('sending', note)
             this.$router.push('/gmail-app/compose')
             eventBus.emit('mailNote', note)
-            
+
+        },
+        convert(email) {
+            this.saveNote(noteService.convert(email))
+
         },
         remove(note) {
             noteService.remove(note.id)
@@ -100,7 +105,6 @@ export default {
             this.filterBy = filter
             if (!this.filterBy.typesToShow.length)
                 this.filterBy.typesToShow = Object.keys(this.filterMap)
-            console.log(this.filterBy);
             this.getNotes()
         },
         filterNote(note) {
