@@ -9,7 +9,7 @@ export default{
         </header>
         <input class="to" v-model="to" type="text" placeholder="To" />
         <input class="subject" v-model="subject" type="text" placeholder="Subject" />
-        <textarea v-model="body" name="" id="" cols="30" rows="10"></textarea>
+        <textarea  v-model="body" name="" id="" cols="30" rows="10"></textarea>
         <button @click.prevent="sendMessage">send</button>
     </form>
     `,
@@ -29,6 +29,7 @@ export default{
             eventBus.on('mailNote' , this.sendNote)
     },
     methods:{
+      
         sendMessage(){
             if(this.to === '') return
             gmailService.sendEmail(this.to , this.subject , this.body)
@@ -43,5 +44,10 @@ export default{
         // hideComposed(){
         //     this.$emit('hideComposed')
         // }
+    },
+    watch:{
+        body(){
+            console.log(this.body) 
+        },
     }
 }
