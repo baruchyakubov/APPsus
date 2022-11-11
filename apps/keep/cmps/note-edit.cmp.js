@@ -1,3 +1,6 @@
+// <label for="todoLabel">Label: </label>
+// <input type="text" id="todoLabel" v-model="noteInfo['note-todos'].label" placeholder="Label..." required />
+{/* <input type="text" v-model="noteInfo['note-img'].title"  placeholder="Image Title..." required/> */ }
 import { eventBus } from "../../../services/event-bus.service.js"
 import { noteService } from "../services/keep-app.service.js"
 
@@ -18,26 +21,26 @@ export default {
             </section>
         </div>    
          <form class="note-edit flex column" v-if="newNote" >
+             <div class="input-box">
+                 <input type="text" v-model="noteInfo['note-img'].title" required/>
+                 <span>Title</span>    
+             </div>
+
             <div class="input-box" v-if="newNote.type === 'note-txt'">
                 <textarea v-model="noteInfo['note-txt'].txt" cols="30" rows="10" required></textarea>
                 <span>Add a message</span>    
             </div>
             <ul v-if="newNote.type === 'note-todos'" >
-            <h2>Todo:</h2>
-            <div class="flex justify-between">
-                <label for="todoLabel">Label: </label>
-                <input type="text" id="todoLabel" v-model="noteInfo['note-todos'].label" placeholder="Label..." required />
-                <img class="icon" src="../../../assets/images/add.png" alt="123" @click.stop.prevent="noteInfo[newNote.type].todos.push({ txt: '', doneAt: null })" title="Add a todo!"/>
-            </div>
                 <li v-for="(todo, index) in noteInfo['note-todos'].todos" class="input-box">
                     <input type="text" v-model="noteInfo['note-todos'].todos[index].txt" required/>
                     <button class="delete-todo" @click.stop.prevent="noteInfo['note-todos'].todos.splice(index, 1)">X</button>
                 </li>
+            <img class="icon" src="../../../assets/images/add.png" alt="123" @click.stop.prevent="noteInfo[newNote.type].todos.push({ txt: '', doneAt: null })" title="Add a todo!"/>
             </ul>
             
             <div v-if="newNote.type === 'note-img'" class="input-box">
-                <input type="text" v-model="noteInfo['note-img'].title"  placeholder="Image Title..." required/>
-                <input type="text" v-model="noteInfo['note-img'].url" placeholder="Type image url here!" required/>
+                <input type="text" v-model="noteInfo['note-img'].url" required/>
+                <span>Type image url here!</span>
             </div>
             <button v-if="newNote">Save</button>
         </form>
@@ -50,10 +53,11 @@ export default {
             newNote: noteService.createNewNote(),
             noteInfo: {
                 'note-txt': {
+                    title: '',
                     txt: '',
                 },
                 'note-todos': {
-                    label: '',
+                    title: '',
                     todos: [{ txt: '', doneAt: null }]
                 },
                 'note-img': {

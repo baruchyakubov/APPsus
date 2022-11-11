@@ -1,3 +1,6 @@
+.keep-app{
+    font-size: 10px;
+}
 
 .keep-header{
     padding: 1em;
@@ -34,43 +37,57 @@
 
 .note-list-container{
     background-color: var(--clr1);
+    padding-block-end: 2.5em;
 }
 
 .note-list{
-    max-width: 1340px;
+    max-width: 1080px;
     column-width: 18em;
     padding:1em;
     column-gap: 1.4em;
     margin: auto;
-    /* padding-bottom: 10em; */
-
 }
-/* .note-list.pinned-list{
-    column-span: all;
-    padding-inline: 0;
-} */
+
+.note-list.pinned{
+    max-width: 940px;
+    column-gap: 1.75em
+}
+
 .note{
     background-color: var(--clr3);
+    z-index: 2;
     break-inside: avoid;
     font-size: 2em;
     position:relative;
     border-radius:1em;
     transition: 0.2s;
     transition-delay: 0.3s;
-    min-height: 6em;
-    max-width: 12em;
+    min-height: 7em;
+    max-width: 19.2em;
     margin-block-end: 1.4em;
     overflow: hidden;
+    text-align: center;
 }
 
 .note:hover{
-    padding-block-end: 2.5em;
+    /* padding-block-end: 2.5em; */
 }
 
-/* .note-list:has(.note:hover) > .note:not(.note:hover){
-    break-inside: auto;
-} */
+.note:hover + .note{
+    font-size: small;
+    z-index: 0;
+}
+.note:hover > .note-options.actions{
+    /* transform: translateY(100%); */
+    background-color: #435552;
+}
 
+.note:hover > .icon.duplicate,
+.note:hover > .note-options.actions{
+
+    cursor: pointer;
+    opacity:1;
+}
 .note.pinned{
     outline: #f8b400 outset 0.3em;
     box-shadow: 5px 5px 15px 5px rgba(0,0,0,0.7);
@@ -81,14 +98,20 @@
 }
 
 .note-content{
-    object-fit: contain;
-    border-end-end-radius: 1em;
-    border-end-start-radius: 1em;
-    max-width: 100%;
+    /* width: 90%; */
+    /* margin-inline: auto; */
     transition:0.2s;
 }
 
-.note:hover .note-content{
+img.note-content{
+    object-fit: contain;
+    border-end-end-radius: 1em;
+    border-end-start-radius: 1em;
+    width: 100%;
+
+}
+
+.note:hover img.note-content{
     border-radius: 0;
 }
 
@@ -100,23 +123,6 @@
     left:0.2em;
 }
 
-.icon.pinned{
-    filter: invert(91%) sepia(15%) saturate(110%) hue-rotate(139deg) brightness(105%) contrast(84%);
-}
-
-.icon.duplicate{
-    position: absolute;
-    height: 1.8em;
-    top: 0.1em;
-    right: 0.1em;
-    opacity: 0;
-    transition-delay: 0.3s;
-}
-.note:hover > .icon.duplicate,
-.note:hover > .note-options.actions{
-    cursor: pointer;
-    opacity:1;
-}
 
 .note-options{
     padding: 0.4em;
@@ -126,6 +132,7 @@
 }
 .note-options.actions{
     position: absolute;
+    z-index: 1;
     bottom:0;
     opacity: 0;
     transition-delay: 0.3s;
@@ -138,7 +145,9 @@
     background-color: #a7bcb957;
     border-radius: 50%;
     padding: 0.2em;
-    transition: 0.2s
+    transition: 0.2s;
+    height: 1.8em;
+
 }
 
 .icon.toggled{
@@ -151,6 +160,16 @@
     background-color: rgb(251, 189, 0);
 }
 
+.icon.pinned{
+    filter: invert(91%) sepia(15%) saturate(110%) hue-rotate(139deg) brightness(105%) contrast(84%);
+}
+
+.icon.duplicate{
+    position: absolute;
+    top: 0.1em;
+    right: 0.1em;
+    opacity: 0;
+}
 
 /* MODAL */
 .main-screen{
@@ -233,7 +252,7 @@
     border: none;
     padding: 0.8em;
     width: 100%;
-    font-size: 1.2em;
+    font-size: 2em;
     border-radius: 0.8em;
     outline: none;
     transition: 0.4s;

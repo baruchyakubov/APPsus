@@ -93,7 +93,7 @@ function _createNotes() {
                 type: "note-img",
                 info: {
                     url: "../../../assets/images/keep/demo-image_1.jpg",
-                    title: "Bobi and Me"
+                    title: "last autumn"
                 },
                 style: getRandomColor()
             },
@@ -103,7 +103,7 @@ function _createNotes() {
                 isPinned: true,
                 info: {
                     url: "../../../assets/images/keep/cartagena.jpg",
-                    title: "Bobi and Me"
+                    title: "Cartagena"
                 },
                 style: getRandomColor()
             },
@@ -112,7 +112,7 @@ function _createNotes() {
                 type: "note-img",
                 info: {
                     url: "../../../assets/images/keep/istanbul.jpg",
-                    title: "Bobi and Me"
+                    title: "Last day in istanbul.."
                 },
                 style: getRandomColor()
             },
@@ -121,7 +121,7 @@ function _createNotes() {
                 type: "note-img",
                 info: {
                     url: "../../../assets/images/keep/istanbul2.jpg",
-                    title: "Bobi and Me"
+                    title: "golden horn"
                 },
                 style: getRandomColor()
             },
@@ -130,7 +130,7 @@ function _createNotes() {
                 type: "note-img",
                 info: {
                     url: "../../../assets/images/keep/medellin.jpg",
-                    title: "Bobi and Me"
+                    title: "Medellin"
                 },
                 style: getRandomColor()
             },
@@ -139,7 +139,7 @@ function _createNotes() {
                 type: "note-img",
                 info: {
                     url: "../../../assets/images/keep/sailing.jpg",
-                    title: "Greece flotilla 27/4/2012"
+                    title: "flotilla sporades 27/4/2012"
                 },
                 style: getRandomColor()
             },
@@ -158,7 +158,7 @@ function _createNotes() {
                 type: "note-todos",
                 style: getRandomColor(),
                 info: {
-                    label: "Next time at the Supermarket:",
+                    title: "Next time at the Supermarket:",
                     todos: [
                         { txt: "milk 2.5%", doneAt: null },
                         { txt: "bananas", doneAt: null },
@@ -172,7 +172,7 @@ function _createNotes() {
                 type: "note-todos",
                 style: getRandomColor(),
                 info: {
-                    label: "before heading out",
+                    title: "before heading out",
                     todos: [
                         { txt: "finish my work", doneAt: null },
                         { txt: "call mom", doneAt: null },
@@ -186,7 +186,7 @@ function _createNotes() {
                 style: getRandomColor(),
                 isPinned: true,
                 info: {
-                    label: "phone numbers",
+                    title: "phone numbers",
                     todos: [
                         { txt: "omri 0531972937", doneAt: null },
                         { txt: "dobi +1 948-3483038", doneAt: null },
@@ -202,7 +202,7 @@ function _createNotes() {
                 type: "note-todos",
                 style: getRandomColor(),
                 info: {
-                    label: "Haven't been yet:",
+                    title: "Haven't been yet:",
                     todos: [
                         { txt: "Morroco", doneAt: null },
                         { txt: "Andalucia", doneAt: null },

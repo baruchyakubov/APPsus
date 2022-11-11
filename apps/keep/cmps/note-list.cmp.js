@@ -4,7 +4,7 @@ export default {
     props: ['notes'],
     template: /*html*/`
         <main class="note-list-container full" v-if="notes">
-            <div class="note-list">
+            <div class="note-list pinned">
                 <note-preview v-for="note in pinnedList"
                 :note ="note"
                 @noteAction="noteAction($event)"/>

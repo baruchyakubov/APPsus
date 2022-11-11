@@ -75,6 +75,7 @@ export default {
         mail(note) {
             console.log('sending', note)
             eventBus.emit('mailNote', note)
+            this.$router.push('/gmail-app')
         },
         remove(note) {
             noteService.remove(note.id)
@@ -89,7 +90,8 @@ export default {
                 .then(notes => {
                     if (this.filterBy)
                         notes = notes.filter(note => this.filterNote(note))
-                    this.notes = notes.sort((a, b) => a.isPinned ? -1 : b.isPinned ? 1 : 0)
+                    this.notes = notes
+                    // .sort((a, b) => a.isPinned ? -1 : b.isPinned ? 1 : 0)
                 })
         },
         setFilter(filter) {
