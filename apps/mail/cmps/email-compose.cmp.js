@@ -27,6 +27,7 @@ export default{
                 this.username = username
             })
             eventBus.on('mailNote' , this.sendNote)
+            
     },
     methods:{
       
