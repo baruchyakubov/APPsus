@@ -21,8 +21,8 @@ function onDown(ev) {
 
 function onMove(ev) {
     console.log('Im from onMove')
-    const { isDrag } = getCircle()
     if (!isDrag) return
+    // const { isDrag } = getCircle()
     const pos = getEvPos(ev)
     //Calc the delta , the diff we moved
     const dx = pos.x - gStartPos.x
