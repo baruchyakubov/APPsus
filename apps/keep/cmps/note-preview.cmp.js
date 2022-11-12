@@ -35,17 +35,21 @@ export default {
     data() {
         return {
             isFakePinned: false,
+            isDragged: false,
         }
     },
     methods: {
         onMove(e) {
+            if (!this.isDragged) return
             console.log(e)
         },
         onDown(e) {
             console.log(e)
+            isDragged = true;
         },
         onUp(e) {
             console.log(e)
+            isDragged = false
         },
     },
     computed: {

@@ -1,5 +1,5 @@
 import { noteService } from '../apps/keep/services/keep-app.service.js'
-import { eventBus } from "../../../services/event-bus.service.js"
+import { eventBus } from "../services/event-bus.service.js"
 
 import noteFilter from '../apps/keep/cmps/note-filter.cmp.js'
 import noteList from '../apps/keep/cmps/note-list.cmp.js'
