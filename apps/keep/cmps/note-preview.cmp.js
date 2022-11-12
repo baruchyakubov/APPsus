@@ -1,11 +1,11 @@
+import { dragService } from "../services/drag-and-drop.service.js"
+
 export default {
     props: ['note'],
     template: /*html*/`
-    <section class="note flex"
-    :style="{ 'background-color': note.style }" :class="isPinned"
-    @mousemove="onMove" @mousedown="onDown" @mouseup="onUp"
-    @touchmove="onMove" @touchstart="onDown" @touchend="onUp">
-        <img class="icon duplicate" src="../../../assets/images/copy.png" alt="" @click="$emit('noteAction', {action:'copy', note})">
+    <section class="note flex" 
+    :style="{ 'background-color': note.style }" :class="noteModes">
+        <img class="icon duplicate" src="./assets/images/drag.png" alt="">
 
         <div class="flex column" style="width: 100%;" v-if="note.type === 'note-txt'" >
             <h1 class="note-header">{{note.info.title}}</h1>
@@ -23,46 +23,32 @@ export default {
             <h1 class="note-header">{{note.info.title}}</h1>
             <img class="note-content"  :src="note.info.url" alt="123" />
         </div>
-        <div class="note-options actions full flex" :class="isPinned" :style="{ 'background-color': note.style }">
-            <img class="icon" src="../../../assets/images/pin.png" title="pin this note" @click="$emit('noteAction', { action: 'pin', note: this.note })" alt="" :class="isPinned" 
+        <div class="note-options actions full flex" :class="noteModes" :style="{ 'background-color': note.style }">
+            <img class="icon" src="./assets/images/pin.png" title="pin this note" @click="$emit('noteAction', { action: 'pin', note: this.note })" alt="" :class="noteModes" 
             @mouseover="isFakePinned = !isFakePinned" @mouseleave="isFakePinned = !isFakePinned"/>
-            <img class="icon" src="../../../assets/images/edit.png" title="edit this note" @click="$emit('noteAction', {action:'edit', note})" alt="" />
-            <img class="icon" src="../../../assets/images/mail.png" title="send this note via gMail" @click="$emit('noteAction', {action: 'mail', note})" alt="" />
-            <img class="icon" src="../../../assets/images/delete.png" title="delete this note" @click="$emit('noteAction', {action:'remove', note})" alt="" />
+            <img class="icon" src="./assets/images/edit.png" title="edit this note" @click="$emit('noteAction', {action:'edit', note})" alt="" />
+            <img class="icon" src="./assets/images/mail.png" title="send this note via gMail" @click="$emit('noteAction', {action: 'mail', note})" alt="" />
+            <img class="icon" src="./assets/images/copy.png" alt="" @click="$emit('noteAction', {action:'copy', note})" title="copy this note">
+            <img class="icon" src="./assets/images/delete.png" title="delete this note" @click="$emit('noteAction', {action:'remove', note})" alt="" />
         </div>
     </section>
     `,
     data() {
         return {
             isFakePinned: false,
-            isDragged: false,
         }
     },
-    methods: {
-        onMove(e) {
-            if (!this.isDragged) return
-            console.log(e)
-        },
-        onDown(e) {
-            console.log(e)
-            isDragged = true;
-        },
-        onUp(e) {
-            console.log(e)
-            isDragged = false
-        },
-    },
     computed: {
-        isPinned() {
+        noteModes() {
             return { pinned: this.note.isPinned || this.isFakePinned }
-        },
-        type() {
-            const type = this.note.type
-            return {
-                text: type === 'note-txt',
-                image: type === 'note-img',
-                todos: type === 'note-todos'
-            }
-        },
+        }
+    },
+    type() {
+        const type = this.note.type
+        return {
+            text: type === 'note-txt',
+            image: type === 'note-img',
+            todos: type === 'note-todos'
+        }
     },
 }

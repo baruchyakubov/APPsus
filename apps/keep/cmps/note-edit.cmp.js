@@ -10,10 +10,10 @@ export default {
     <div class="modal" :class="screenStyle" :style="{ 'background-color': newNote.style }" @submit.prevent="save">
         <div class="note-options types full flex column">
             <section class="flex">
-                <img class="icon" src="../../../assets/images/pin.png" title="Pin this note"  alt="" @click="newNote.isPinned = !newNote.isPinned" :class="isPinned"/>
-                <img class="icon" src="../../../assets/images/list.png" title="Todo-list"  alt="" @click="newNote.type = 'note-todos'"/>
-                <img class="icon" src="../../../assets/images/image.png" title="Add an image"  alt="" @click="newNote.type = 'note-img'"/>
-                <img class="icon" src="../../../assets/images/text.png" title="Text"  alt="" @click="newNote.type = 'note-txt'"/>
+                <img class="icon" src="./assets/images/pin.png" title="Pin this note"  alt="" @click="newNote.isPinned = !newNote.isPinned" :class="isPinned"/>
+                <img class="icon" src="./assets/images/list.png" title="Todo-list"  alt="" @click="newNote.type = 'note-todos'"/>
+                <img class="icon" src="./assets/images/image.png" title="Add an image"  alt="" @click="newNote.type = 'note-img'"/>
+                <img class="icon" src="./assets/images/text.png" title="Text"  alt="" @click="newNote.type = 'note-txt'"/>
             </section>
             <section class="color-picker flex wrap">
                 <div v-for="color in colors" class="color-radio" :style="{ 'background-color': color }" @click="newNote.style = color"></div>
@@ -35,7 +35,7 @@ export default {
                     <input type="text" v-model="noteInfo['note-todos'].todos[index].txt" required/>
                     <button class="delete-todo" @click.stop.prevent="noteInfo['note-todos'].todos.splice(index, 1)">X</button>
                 </li>
-            <img class="icon" src="../../../assets/images/add.png" alt="123" @click.stop.prevent="noteInfo[newNote.type].todos.push({ txt: '', doneAt: null })" title="Add a todo!"/>
+            <img class="icon" src="./assets/images/add.png" alt="123" @click.stop.prevent="noteInfo[newNote.type].todos.push({ txt: '', doneAt: null })" title="Add a todo!"/>
             </ul>
             
             <div v-if="newNote.type === 'note-img'" class="input-box">

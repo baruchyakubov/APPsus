@@ -4,9 +4,9 @@ export default {
                 <input type="text" v-model="filter.txt" @input="$emit('filter', filter)" required />
                 <span>Search</span>
                 <section class="type-filter flex">
-                    <img class="icon" src="../../../assets/images/list.png" title="Todo-list"  alt="" @click="toggleType('note-todos')"  :class="toggled('note-todos')"/>
-                    <img class="icon" src="../../../assets/images/image.png" title="Add an image"  alt="" @click="toggleType('note-img')" :class="toggled('note-img')"/>
-                    <img class="icon" src="../../../assets/images/text.png" title="Text"  alt="" @click="toggleType('note-txt')" :class="toggled('note-txt')"/>
+                    <img class="icon" src="./assets/images/list.png" title="Todo-list"  alt="" @click="toggleType('note-todos')"  :class="toggled('note-todos')"/>
+                    <img class="icon" src="./assets/images/image.png" title="Add an image"  alt="" @click="toggleType('note-img')" :class="toggled('note-img')"/>
+                    <img class="icon" src="./assets/images/text.png" title="Text"  alt="" @click="toggleType('note-txt')" :class="toggled('note-txt')"/>
                 </section>
             </div>
     `,
