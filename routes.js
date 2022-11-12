@@ -5,8 +5,8 @@ import keepApp from './views/keep-app.cmp.js'
 import gmailApp from './views/gmail-app.cmp.js'
 
 
-import emailDetails from '../apps/mail/views/email-details.cmp.js'
-import emailComposed from '../apps/mail/cmps/email-compose.cmp.js'
+import emailDetails from './apps/mail/views/email-details.cmp.js'
+import emailComposed from './apps/mail/cmps/email-compose.cmp.js'
 
 const { createRouter, createWebHashHistory } = VueRouter
 

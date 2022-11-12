@@ -27,7 +27,7 @@ export default{
                 this.username = username
             })
             eventBus.on('mailNote' , this.sendNote)
-            
+
     },
     methods:{
       
@@ -45,10 +45,5 @@ export default{
         // hideComposed(){
         //     this.$emit('hideComposed')
         // }
-    },
-    watch:{
-        body(){
-            console.log(this.body) 
-        },
     }
 }

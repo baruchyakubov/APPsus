@@ -1,15 +1,24 @@
-.email-preview{
+/* BASICS */
+
+.gmail-app{
+  background-color: rgb(241, 244, 255);
+}
+
+.gmail-app button{
+  font-size: larger;
   padding: 10px;
-  cursor: pointer;
-  border-bottom: 0.5px rgb(164, 165, 168) solid;
-  display: grid;
-  grid-template-columns: 15% 40% 15% 15% 15%;
-  align-items: center;
-  justify-items: flex-start;
+  background-color: gainsboro;
+  border-radius: 10px;
+  border: 0px black;
+  transition: 1s;
 }
-.email-preview:hover{
-  border-bottom: 3px rgb(164, 165, 168) solid;
+
+.gmail-app button:hover{
+  background-color: rgb(151, 146, 146);
 }
+
+/* SCROLLBAR */
+
 ::-webkit-scrollbar{
   width: 10px;
 }
@@ -23,6 +32,7 @@
   background: rgb(182, 170, 192);
 }
 
+/* EMAIL-LIST */
 .preview-list{
   height: 50vh;
   overflow-y:auto;
@@ -33,18 +43,20 @@
   padding: 20px;
   background-color: rgb(197, 183, 183);
   border-radius: 10px;
+  margin-top: 20px;
 }
 
-/* *{
-  font-family: Fuzzy Bubbles;
-} */
-
-@media (max-width:658px){
-  .email-preview{
-   display: flex;
-   flex-direction: column;
-   gap: 5px;
-  }
+.email-preview{
+  padding: 10px;
+  cursor: pointer;
+  border-bottom: 0.5px rgb(164, 165, 168) solid;
+  display: grid;
+  grid-template-columns: 15% 40% 15% 15% 15%;
+  align-items: center;
+  justify-items: flex-start;
+}
+.email-preview:hover{
+  border-bottom: 3px rgb(164, 165, 168) solid;
 }
 
 .date-preview{
@@ -61,13 +73,13 @@
   background-color: rgb(216, 209, 209);
 }
 
-.gmail-app{
-  background-color: rgb(241, 244, 255);
+.delete{
+  height: 8px;
+  width: 8px;
+  justify-self: center;
 }
 
-.email-list{
-  margin-top: 20px;
-}
+/* COMPOSE */
 
 .composed-form{
   position: fixed;
@@ -101,6 +113,7 @@
   background-color: var(--clr1);
 }
 
+/* FILTER */
 
 .filter-container{
   flex-direction: column;
@@ -121,9 +134,12 @@
   margin-bottom: 0px;
 }
 
+/* LOGO */
 .point{
   color: forestgreen;
 }
+
+/* FOLDER-LIST */
 
 .folder-list{
   display: flex;
@@ -131,32 +147,7 @@
   
 }
 
-.gmail-app button{
-  font-size: larger;
-  padding: 10px;
-  background-color: gainsboro;
-  border-radius: 10px;
-  border: 0px black;
-  transition: 1s;
-}
-
-@media (max-width:658px){
-  .gmail-app button{
-   font-size: small;
-   padding: 2px;
-  }
-  .search{
-    width: 220px;
-  }
-  .composed-form>*{
-    width: 98vw;
-  }
-}
-
-.gmail-app button:hover{
-  background-color: rgb(151, 146, 146);
-  /* font-size: x-large; */
-}
+/* EMAIL-DETAILS */
 
 .details-container{
   margin-top: 20px;
@@ -177,12 +168,33 @@
   font-size: x-large;
 }
 
+/* FOOTER */
+
 .app-footer{
   margin-top: 20px;
 }
 
-.delete{
-  height: 8px;
-  width: 8px;
-  justify-self: center;
+/* RESPONSIVE */
+
+@media (max-width:658px){
+  .email-preview{
+   display: flex;
+   flex-direction: column;
+   gap: 5px;
+  }
 }
+
+@media (max-width:658px){
+  .gmail-app button{
+   font-size: small;
+   padding: 2px;
+  }
+  .search{
+    width: 220px;
+  }
+  .composed-form>*{
+    width: 98vw;
+  }
+}
+
+
