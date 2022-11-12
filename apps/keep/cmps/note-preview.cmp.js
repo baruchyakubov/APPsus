@@ -5,7 +5,7 @@ export default {
     :style="{ 'background-color': note.style }" :class="isPinned"
     @mousemove="onMove" @mousedown="onDown" @mouseup="onUp"
     @touchmove="onMove" @touchstart="onDown" @touchend="onUp">
-        <img class="icon duplicate" src="../../../assets/images/copy.png" alt="" @click="$emit('noteAction', {action:'copy', note})">
+        <img class="icon duplicate" src="./assets/images/copy.png" alt="" @click="$emit('noteAction', {action:'copy', note})">
 
         <div class="flex column" style="width: 100%;" v-if="note.type === 'note-txt'" >
             <h1 class="note-header">{{note.info.title}}</h1>
@@ -24,11 +24,11 @@ export default {
             <img class="note-content"  :src="note.info.url" alt="123" />
         </div>
         <div class="note-options actions full flex" :class="isPinned" :style="{ 'background-color': note.style }">
-            <img class="icon" src="../../../assets/images/pin.png" title="pin this note" @click="$emit('noteAction', { action: 'pin', note: this.note })" alt="" :class="isPinned" 
+            <img class="icon" src="./assets/images/pin.png" title="pin this note" @click="$emit('noteAction', { action: 'pin', note: this.note })" alt="" :class="isPinned" 
             @mouseover="isFakePinned = !isFakePinned" @mouseleave="isFakePinned = !isFakePinned"/>
-            <img class="icon" src="../../../assets/images/edit.png" title="edit this note" @click="$emit('noteAction', {action:'edit', note})" alt="" />
-            <img class="icon" src="../../../assets/images/mail.png" title="send this note via gMail" @click="$emit('noteAction', {action: 'mail', note})" alt="" />
-            <img class="icon" src="../../../assets/images/delete.png" title="delete this note" @click="$emit('noteAction', {action:'remove', note})" alt="" />
+            <img class="icon" src="./assets/images/edit.png" title="edit this note" @click="$emit('noteAction', {action:'edit', note})" alt="" />
+            <img class="icon" src="./assets/images/mail.png" title="send this note via gMail" @click="$emit('noteAction', {action: 'mail', note})" alt="" />
+            <img class="icon" src="./assets/images/delete.png" title="delete this note" @click="$emit('noteAction', {action:'remove', note})" alt="" />
         </div>
     </section>
     `,

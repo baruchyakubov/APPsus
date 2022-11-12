@@ -92,7 +92,7 @@ function _createNotes() {
                 id: utilService.makeId(),
                 type: "note-img",
                 info: {
-                    url: "../../../assets/images/keep/demo-image_1.jpg",
+                    url: "./assets/images/keep/demo-image_1.jpg",
                     title: "last autumn"
                 },
                 style: getRandomColor()
@@ -102,7 +102,7 @@ function _createNotes() {
                 type: "note-img",
                 isPinned: true,
                 info: {
-                    url: "../../../assets/images/keep/cartagena.jpg",
+                    url: "./assets/images/keep/cartagena.jpg",
                     title: "Cartagena"
                 },
                 style: getRandomColor()
@@ -111,7 +111,7 @@ function _createNotes() {
                 id: utilService.makeId(),
                 type: "note-img",
                 info: {
-                    url: "../../../assets/images/keep/istanbul.jpg",
+                    url: "./assets/images/keep/istanbul.jpg",
                     title: "Last day in istanbul.."
                 },
                 style: getRandomColor()
@@ -120,7 +120,7 @@ function _createNotes() {
                 id: utilService.makeId(),
                 type: "note-img",
                 info: {
-                    url: "../../../assets/images/keep/istanbul2.jpg",
+                    url: "./assets/images/keep/istanbul2.jpg",
                     title: "golden horn"
                 },
                 style: getRandomColor()
@@ -129,7 +129,7 @@ function _createNotes() {
                 id: utilService.makeId(),
                 type: "note-img",
                 info: {
-                    url: "../../../assets/images/keep/medellin.jpg",
+                    url: "./assets/images/keep/medellin.jpg",
                     title: "Medellin"
                 },
                 style: getRandomColor()
@@ -138,7 +138,7 @@ function _createNotes() {
                 id: utilService.makeId(),
                 type: "note-img",
                 info: {
-                    url: "../../../assets/images/keep/sailing.jpg",
+                    url: "./assets/images/keep/sailing.jpg",
                     title: "flotilla sporades 27/4/2012"
                 },
                 style: getRandomColor()
@@ -148,7 +148,7 @@ function _createNotes() {
                 type: "note-img",
                 isPinned: true,
                 info: {
-                    url: "../../../assets/images/keep/sunset.jpg",
+                    url: "./assets/images/keep/sunset.jpg",
                     title: "Ecuador.."
                 },
                 style: getRandomColor()
