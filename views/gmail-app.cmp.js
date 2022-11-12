@@ -18,7 +18,6 @@ export default {
     </section>
    
     <email-list @changeReadState="changeReadState" @hideList="hideList" v-if="emails && !isSelectedEmail" :emails="emailsToShow" />
-    <!-- <email-composed v-if="isComposed" @hideComposed="hideComposed"/> -->
     <router-view></router-view>
     </section>
    
@@ -27,7 +26,6 @@ export default {
         return {
             emails: null,
             criteria: {},
-            // isComposed:false,
             isSelectedEmail:false
         }
 
@@ -49,7 +47,6 @@ export default {
         emailFilter,
         emailFolderList,
         emailList,
-        // emailComposed
     },
     methods: {
         changeReadState(book) {
@@ -73,12 +70,6 @@ export default {
         deleteEmail(emailId){
             gmailService.remove(emailId)
         },
-        // showComposed(){
-        //     this.isComposed = true
-        // },
-        // hideComposed(){
-        //     this.isComposed = false
-        // },
         hideList(){
             this.isSelectedEmail = true
         },
@@ -91,11 +82,9 @@ export default {
             return this.criteria
         },
         emailsToShow(){
-            console.log('hey');
             const regex = new RegExp(this.criteria.txt, 'i')
             var emails = this.emails.filter(email => regex.test(email.fullname)
             && email.status === this.criteria.status)
-            // emails = emails.filter(email => email.isRead > this.filterBy.isRead)
             return emails
         } 
     },

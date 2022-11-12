@@ -10,6 +10,7 @@ export default{
         <input class="to" v-model="to" type="text" placeholder="To" />
         <input class="subject" v-model="subject" type="text" placeholder="Subject" />
         <textarea  v-model="body" name="" id="" cols="30" rows="10"></textarea>
+        <div class="note-info">{{ noteInfo }}</div>
         <button @click.prevent="sendMessage">send</button>
     </form>
     `,
@@ -19,6 +20,7 @@ export default{
             to: '',
             subject:'',
             body:'',
+            noteInfo:''
         }
     },
     created(){
@@ -27,23 +29,15 @@ export default{
                 this.username = username
             })
             eventBus.on('mailNote' , this.sendNote)
-
     },
-    methods:{
-      
+    methods:{  
         sendMessage(){
             if(this.to === '') return
-            gmailService.sendEmail(this.to , this.subject , this.body)
-                 .then(this.$router.push('/gmail-App'))
+            gmailService.sendEmail(this.to , this.subject , this.body , this.noteInfo)
+                .then(this.$router.push('/gmail-App'))
         },
         sendNote(note){
-            // console.log(note.info.txt);
-           this.body = note.info.txt
-           console.log(this.body)
-        //    document.querySelector('.body-txt').innerText = note.info.txt
-        }
-        // hideComposed(){
-        //     this.$emit('hideComposed')
-        // }
-    }
+            this.noteInfo = note.info.txt
+        }  
+    },
 }

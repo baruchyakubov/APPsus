@@ -27,7 +27,10 @@ Thankes,
     created(){
         const id = this.$route.params.id
         gmailService.get(id)
-            .then(email => this.email = email)
+            .then(email => {this.email = email
+              console.log(this.email.note);
+              if(this.email.note !== '') this.isNote = true
+            })
     },
     computed:{
         setDate(){

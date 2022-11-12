@@ -22,8 +22,5 @@ export default{
            this.criteria.status = 'trash'
             this.$emit('setCriteria' , this.criteria) 
         },
-        // showComposed(){
-        //     this.$emit('showComposed') 
-        // }
     }
 }

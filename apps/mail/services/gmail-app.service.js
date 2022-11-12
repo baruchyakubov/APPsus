@@ -63,7 +63,7 @@ function save(email) {
     }
 }
 
-function sendEmail(to, subject, body) {
+function sendEmail(to, subject, body , note) {
     var email = {
         id: null,
         subject: subject,
@@ -73,7 +73,8 @@ function sendEmail(to, subject, body) {
         from: 'user@appsus.com',
         to,
         fullname: 'Mahatma Appsus',
-        status: 'sent'
+        status: 'sent',
+        note
     }
     return save(email)
 }
@@ -99,7 +100,8 @@ function _createEmails() {
                 from: 'user@appsus.com',
                 to: 'momo@momo.com',
                 fullname: 'Mahatma Appsus',
-                status: 'sent'
+                status: 'sent',
+                note:''
             },
 
             {
@@ -111,7 +113,8 @@ function _createEmails() {
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'Google Maps Platform',
-                status: 'inbox'
+                status: 'inbox',
+                note:''
             },
             {
                 id: utilService.makeId(),
@@ -122,7 +125,8 @@ function _createEmails() {
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'MyFitnessPal',
-                status: 'Can you believe these dishes are under 350 calories?'
+                status: 'Can you believe these dishes are under 350 calories?',
+                note:''
             },
             {
                 id: utilService.makeId(),
@@ -133,7 +137,8 @@ function _createEmails() {
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'muki',
-                status: 'inbox'
+                status: 'inbox',
+                note:''
             },
             {
                 id: utilService.makeId(),
@@ -144,7 +149,8 @@ function _createEmails() {
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'duki',
-                status: 'inbox'
+                status: 'inbox',
+                note:''
             },
             {
                 id: utilService.makeId(),
@@ -155,7 +161,8 @@ function _createEmails() {
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'pet',
-                status: 'inbox'
+                status: 'inbox',
+                note:''
             },
             {
                 id: utilService.makeId(),
@@ -166,7 +173,8 @@ function _createEmails() {
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'netflix',
-                status: 'inbox'
+                status: 'inbox',
+                note:''
             },
             {
                 id: utilService.makeId(),
@@ -177,7 +185,8 @@ function _createEmails() {
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'puki',
-                status: 'inbox'
+                status: 'inbox',
+                note:''
             },
             {
                 id: utilService.makeId(),
@@ -188,7 +197,8 @@ function _createEmails() {
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'puki',
-                status: 'inbox'
+                status: 'inbox',
+                note:''
             },
             {
                 id: utilService.makeId(),
@@ -199,7 +209,8 @@ function _createEmails() {
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'puki',
-                status: 'inbox'
+                status: 'inbox',
+                note:''
             },
             {
                 id: utilService.makeId(),
@@ -210,7 +221,8 @@ function _createEmails() {
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'puki',
-                status: 'inbox'
+                status: 'inbox',
+                note:''
             },
             {
                 id: utilService.makeId(),
@@ -221,7 +233,8 @@ function _createEmails() {
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'puki',
-                status: 'inbox'
+                status: 'inbox',
+                note:''
             },
             {
                 id: utilService.makeId(),
@@ -232,7 +245,8 @@ function _createEmails() {
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'puki',
-                status: 'inbox'
+                status: 'inbox',
+                note:''
             },
             {
                 id: utilService.makeId(),
@@ -243,7 +257,8 @@ function _createEmails() {
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'puki',
-                status: 'inbox'
+                status: 'inbox',
+                note:''
             },
             {
                 id: utilService.makeId(),
@@ -254,7 +269,8 @@ function _createEmails() {
                 from: 'momo@momo.com',
                 to: 'user@appsus.com',
                 fullname: 'puki',
-                status: 'inbox'
+                status: 'inbox',
+                note:''
             },
         ]
         localStorage.setItem(EMAILS_KEY, JSON.stringify(emails) || null)
