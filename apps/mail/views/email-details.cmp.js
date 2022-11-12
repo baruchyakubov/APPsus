@@ -1,4 +1,4 @@
-import { gmailService } from '/apps/mail/services/gmail-app.service.js'
+import { gmailService } from '../services/gmail-app.service.js'
 import { eventBus } from '../../../services/event-bus.service.js'
 
 export default{
