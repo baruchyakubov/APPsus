@@ -9,6 +9,7 @@ export const noteService = {
     remove,
     save,
     createNewNote,
+    convert
 }
 
 function query() {
@@ -36,13 +37,12 @@ function createNewNote() {
     return {
         type: 'note-txt',
         isPinned: false,
-        style: '#5dacbd',
+        style: getRandomColor(),
         info: {
             txt: ''
         }
     }
 }
-
 
 function _createNotes() {
     let notes = JSON.parse(localStorage.getItem(NOTES_KEY))
@@ -222,4 +222,19 @@ function _createNotes() {
 function getRandomColor() {
     const colors = ['#DB2828', '#F2711C', '#FBBD00', '#B5CC18', '#21BA45', '#00B5AD', '#2185D0', '#6435C9', '#A333C8', '#E03997',]
     return colors[Math.floor(Math.random() * colors.length)]
+}
+
+function convert(email) {
+    const { txt, title, name } = email
+    //todo currently only text email can be converted
+    return {
+        type: 'note-txt',
+        isPinned: false,
+        style: getRandomColor(),
+        info: {
+            title,
+            txt: `${txt}
+                -From: ${name}`
+        }
+    }
 }

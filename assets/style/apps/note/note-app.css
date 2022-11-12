@@ -45,13 +45,20 @@
     max-width: 1080px;
     column-width: 18em;
     padding:1em;
+    padding-inline: 2em;
     column-gap: 1.4em;
     margin: auto;
+    transition: 0.2s;
+    transition-delay: 0.3s;
 }
 
 .note-list.pinned{
     max-width: 940px;
     column-gap: 1.75em
+}
+
+.note-list.pinned:has(.note:hover){
+    padding-block-end: 6.8em;
 }
 
 .note{
@@ -79,11 +86,11 @@
     transform: translateY(1.6em);
 }
 .note:hover > .note-options.actions{
-    transform: translateY(2.9em);
+    transform: translateY(2.4em);
 }
 
 .note:hover > .note-options.actions.pinned{
-    transform: translateY(3.5em);
+    transform: translateY(3.1em);
 }
 
 .note:hover > .icon.duplicate,
@@ -126,13 +133,12 @@ img.note-content{
 
 
 .note-options{
-    padding: 0.4em;
+    /* padding: 0.4em; */
     justify-content: flex-end;
     gap: 0.4em;
     transition: 0.2s;
 }
 .note-options.actions{
-    background-color: #42b883;
     position: absolute;
     z-index: -1;
     bottom:0;
@@ -140,10 +146,11 @@ img.note-content{
     transition-delay: 0.3s;
     border-end-end-radius: 1em;
     border-end-start-radius: 1em;
-    border: #42b883 solid 0.3em;
+    padding: 0.3em;
 }
 
 .note-options.actions.pinned {
+    background-color: #c8e0d5;
     outline: #f8b400 outset 0.3em;
     box-shadow: 5px 5px 10px 5px rgba(0,0,0,0.7);
 
@@ -355,4 +362,8 @@ img.note-content{
         opacity: 0.7;
         height: 3.8em;
         gap: 0.2em;
+}
+
+.filter .icon{
+    height: 100%;
 }

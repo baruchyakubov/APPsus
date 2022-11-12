@@ -7,7 +7,7 @@ export default {
             <p class="body-preview">{{ limitChar }}</p>
             <p class="date-preview">{{ setDate }}</p>
             <button class="delete" @click.stop="setStatus"><img src="assets/images/delete.png" alt="" /></button>
-            <button @click="sendAsNote">Keep as note</button>
+            <button @click.stop="sendAsNote">Keep as note</button>
     `,
     computed: {
         setColor() {
@@ -31,8 +31,10 @@ export default {
             this.email.status = 'trash'
             eventBus.emit('saveEmailStatus', this.email)
         },
-        sendAsNote(){
-            eventBus.on('getMail' , {fullname:this.email.fullname , subject:this.email.subject , body:this.email.body})
+        sendAsNote() {
+            this.$router.push('/keep-app')
+            eventBus.emit('convertMail', { name: this.email.fullname, title: this.email.subject, txt: this.email.body })
+
         }
     }
 }
