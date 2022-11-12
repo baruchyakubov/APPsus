@@ -70,10 +70,9 @@
     border-radius:1em;
     transition: 0.2s;
     transition-delay: 0.3s;
-    min-height: 7em;
     max-width: 19.2em;
     margin-block-end: 1.4em;
-    text-align: center;
+    text-align: start;
 }
 
 .note:hover{
@@ -103,12 +102,22 @@
 }
 
 .note-header{
+    text-align: center;
+    padding: 0.1em;
     margin-block-end: 0.4em;
 }
 
 .note-content{
     transition:0.2s;
     transition-delay: 0.3s
+}
+
+p.note-content{
+    text-align: center;
+}
+
+ul.note-content > *{
+    margin-bottom: 1.2em
 }
 
 img.note-content{
@@ -191,7 +200,7 @@ img.note-content{
 
 /* MODAL */
 .main-screen{
-    z-index: 1;
+    z-index: 2;
     transition: 0.1s;
     opacity: 0;
     position: fixed;
@@ -204,12 +213,14 @@ img.note-content{
 .modal{
     background-color: #e0ebeb;
     font-size: 1.5em;
-    z-index: 2;
+    z-index: 3;
     color: #24527a;
     border-radius: 1em;
     box-shadow: 5px 5px 15px 1px rgba(0,0,0,0.63);
     transition: 0.2s;
     position: fixed;
+    overflow-Y: scroll;
+    max-height: 90vh;
     top: 40%;
     left: 50%;
     transform: translate(-50%, -50%);

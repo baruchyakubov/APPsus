@@ -22,7 +22,7 @@ export default {
         </div>    
          <form class="note-edit flex column" v-if="newNote" >
              <div class="input-box">
-                 <input type="text" v-model="noteInfo['note-img'].title" required/>
+                 <input type="text" v-if="newNote.type" v-model="noteInfo[newNote.type].title" required/>
                  <span>Title</span>    
              </div>
 
@@ -30,7 +30,7 @@ export default {
                 <textarea v-model="noteInfo['note-txt'].txt" cols="30" rows="10" required></textarea>
                 <span>Add a message</span>    
             </div>
-            <ul v-if="newNote.type === 'note-todos'" >
+            <ul v-if="newNote.type === 'note-todos'">
                 <li v-for="(todo, index) in noteInfo['note-todos'].todos" class="input-box">
                     <input type="text" v-model="noteInfo['note-todos'].todos[index].txt" required/>
                     <button class="delete-todo" @click.stop.prevent="noteInfo['note-todos'].todos.splice(index, 1)">X</button>

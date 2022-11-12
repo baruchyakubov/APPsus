@@ -56,7 +56,6 @@ export default {
             if (!this.isScreen) this.selectedNote = null
         },
         saveNote(note) {
-            debugger
             this.isScreen = false
             noteService.save(note)
                 .then(res => this.getNotes())

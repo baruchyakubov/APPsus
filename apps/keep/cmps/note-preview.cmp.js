@@ -1,23 +1,25 @@
 export default {
     props: ['note'],
     template: /*html*/`
-    <section class="note flex justify-center" 
-    :style="{ 'background-color': note.style }" :class="isPinned">
+    <section class="note flex"
+    :style="{ 'background-color': note.style }" :class="isPinned"
+    @mousemove="onMove" @mousedown="onDown" @mouseup="onUp"
+    @touchmove="onMove" @touchstart="onDown" @touchend="onUp">
         <img class="icon duplicate" src="../../../assets/images/copy.png" alt="" @click="$emit('noteAction', {action:'copy', note})">
 
-        <div class="flex column" v-if="note.type === 'note-txt'" >
+        <div class="flex column" style="width: 100%;" v-if="note.type === 'note-txt'" >
             <h1 class="note-header">{{note.info.title}}</h1>
             <p class="note-content">{{note.info.txt}}</p>
         </div>
 
-        <div class="flex column" v-if="note.type === 'note-todos'">
+        <div class="flex column" style="width: 100%;" v-if="note.type === 'note-todos'">
             <h1 class="note-header">{{note.info.title}}</h1>
             <ul class="note-content" >
                 <li v-for="todo in note.info.todos">{{todo.txt}}</li>
             </ul>
         </div>
 
-        <div class="flex column align-center" v-if="note.type === 'note-img'">
+        <div class="flex column" style="width: 100%;" v-if="note.type === 'note-img'">
             <h1 class="note-header">{{note.info.title}}</h1>
             <img class="note-content"  :src="note.info.url" alt="123" />
         </div>
@@ -34,6 +36,17 @@ export default {
         return {
             isFakePinned: false,
         }
+    },
+    methods: {
+        onMove(e) {
+            console.log(e)
+        },
+        onDown(e) {
+            console.log(e)
+        },
+        onUp(e) {
+            console.log(e)
+        },
     },
     computed: {
         isPinned() {
